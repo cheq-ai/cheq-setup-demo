@@ -4,7 +4,7 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Serve static files from the frontend directory
-app.use(express.static(path.join(__dirname, "../frontend")));
+app.use(express.static(path.join(__dirname, "./frontend")));
 
 // API endpoint
 app.get("/api", (req, res) => {
@@ -13,7 +13,7 @@ app.get("/api", (req, res) => {
 
 // All other requests to frontend
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../frontend", "index.html"));
+  res.sendFile(path.join(__dirname, "./frontend", "index.html"));
 });
 
 app.listen(PORT, () => {
