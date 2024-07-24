@@ -7,12 +7,12 @@ const PORT = process.env.PORT || 5000;
 app.use(express.static(path.join(__dirname, "./frontend")));
 
 // API endpoint
-app.get("/api", (req, res) => {
-  res.send("Hello from the backend!");
-});
+// app.get("/api", (req, res) => {
+//   res.send("Hello from the backend!");
+// });
 
 // All other requests to frontend
-app.get("*", (req, res) => {
+app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "./frontend", "index.html"));
 });
 
