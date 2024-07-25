@@ -1,5 +1,7 @@
+// env: staging
 // net id 8914
 // search id 50193
+// bot useragent string: Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)
 
 const express = require("express");
 const app = express();
@@ -14,7 +16,7 @@ const options = {
   apiEndpoint: apiEndpoints.DEV,
   mode: "blocking",
   threatTypesCodes: {
-    blockRedirect: [2, 3, 6, 10, 11, 16, 18], // 11 = FALSE REPRESENTATION -> block & redirect (redirectUrl)
+    blockRedirect: [2, 3, 6, 10, 11, 16, 18,29], // 11 = FALSE REPRESENTATION -> block & redirect (redirectUrl)
     captcha: [4, 5, 13, 14, 15, 17, 7], // 7 = DISABLED JS -> block & navigate to captcha.html (callback)
   },
   redirectUrl: "https://google.com",
@@ -35,11 +37,7 @@ app.get("/", (req, res) => {
 app.get("/subscribe", middleware(eventsTypes.SUBSCRIBE), function (req, res) {
   console.log(res.getHeaders());
 
-
   res.send("SUBSCRIBE PAGE");
-});
-app.get("/page_load", middleware(eventsTypes.PAGE_LOAD), function (req, res) {
-  res.send("/page_load endpoint");
 });
 
 app.listen(PORT, () => {
