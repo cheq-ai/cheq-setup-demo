@@ -1,9 +1,3 @@
-// adserver env: staging
-// net id 8914
-// search id 50193
-
-// invoke: npm run start -> go to localhost:5000
-
 const express = require("express");
 const app = express();
 const path = require("path");
@@ -19,9 +13,9 @@ const options = {
     blockRedirect: [2, 3, 6, 11, 16, 18, 29, 10], // threat_type 10 = Malicious Bots / threat_type 3 = Automation tool -> bot useragent string: Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html) -> block & redirect (redirectUrl)
     captcha: [4, 5, 13, 15, 17, 7, 14], // threat_type 14 = VPN -> navigate to captcha.html (callback)
   },
-  redirectUrl: "https://localhost:5000/redirect.html",
+  redirectUrl: "http://localhost:5000/redirect", // CHANGE LOCALHOST TO EXTERNAL HOST
   callback: function (req, res, next) {
-    res.sendFile(path.join(__dirname, "./frontend", "captcha.html"));
+    res.sendFile(path.join(__dirname, "/frontend/captcha.html"));
   },
 };
 
@@ -34,14 +28,13 @@ app.set("views", path.join(__dirname, "frontend"));
 // Routes
 app.get("/subscribe", middleware(eventsTypes.SUBSCRIBE), function (req, res) {
   const rtiRes = res.locals.rtiRes;
-  const rtiResString = JSON.stringify(rtiRes, null, 2); // Convert object to a pretty-printed JSON string
+  const rtiResString = JSON.stringify(rtiRes, null, 2);
 
   res.render("subscribe", { rtiResString });
 });
 
-
-app.get("/redirect", (req, res) => {
-  res.sendFile(__dirname + "/frontend/redirect.html");
+app.get("/redirect", function (req, res) {
+  res.render("redirect");
 });
 
 // Start Server
