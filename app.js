@@ -1,4 +1,4 @@
-const dotenv = require('dotenv');
+const dotenv = require("dotenv");
 dotenv.config();
 
 const express = require("express");
@@ -7,7 +7,7 @@ const path = require("path");
 const { rti, eventsTypes } = require("@cheq.ai/cheq-middlewares");
 const { apiEndpoints } = require("@cheq.ai/cheq-middlewares/config");
 const PORT = process.env.PORT || 5000;
-const baseUrl = process.env.BASE_URL
+const baseUrl = process.env.BASE_URL;
 const options = {
   apiKey: process.env.API_KEY,
   tagHash: process.env.TAG_HASH,
