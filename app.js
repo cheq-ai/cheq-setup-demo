@@ -8,8 +8,8 @@ const { rti, eventsTypes } = require("@cheq.ai/cheq-middlewares");
 const { apiEndpoints } = require("@cheq.ai/cheq-middlewares/config");
 const PORT = process.env.PORT || 5000;
 const options = {
-  apiKey: "ca9635f4-81fc-4dc4-9f2f-d4a78680787f",
-  tagHash: "86236b7f11f14e894e0263ad7f7df9a0",
+  apiKey: process.env.API_KEY,
+  tagHash: process.env.TAG_HASH,
   apiEndpoint: apiEndpoints.DEV,
   mode: "blocking",
   threatTypesCodes: {
