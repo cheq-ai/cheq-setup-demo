@@ -1,3 +1,6 @@
+const dotenv = require('dotenv');
+dotenv.config();
+
 const express = require("express");
 const app = express();
 const path = require("path");
@@ -13,7 +16,7 @@ const options = {
     blockRedirect: [2, 3, 6, 11, 16, 18, 29, 10], // threat_type 10 = Malicious Bots / threat_type 3 = Automation tool -> bot useragent string: Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html) -> block & redirect (redirectUrl)
     captcha: [4, 5, 13, 15, 17, 7, 14], // threat_type 14 = VPN -> navigate to captcha.html (callback)
   },
-  redirectUrl: "http://localhost:5000/redirect", // CHANGE LOCALHOST TO EXTERNAL HOST
+  redirectUrl: `${process.env.BASE_URL}/redirect`,
   callback: function (req, res, next) {
     res.sendFile(path.join(__dirname, "/frontend/captcha.html"));
   },
