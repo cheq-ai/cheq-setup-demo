@@ -1,8 +1,8 @@
 # Cheq Adserver Automation Demo Site
 
-This is a simple demo site that demonstrates cheq's adserver/core functionality.
-core automation project: https://gitlab.com/ct-dev/qa/core-test-automation
-This site should be publicly available at https://prospective-viki-cheq-5aade980.koyeb.app/ 
+This is a simple demo site that demonstrates cheq's adserver/core functionality.    
+core automation project: https://gitlab.com/ct-dev/qa/core-test-automation    
+This site should be publicly available at https://prospective-viki-cheq-5aade980.koyeb.app/     
 
 ## Getting Started
 
