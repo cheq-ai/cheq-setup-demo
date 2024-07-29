@@ -102,3 +102,38 @@ pre {
   word-wrap: break-word;
   max-width: 100%;
 }
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.tab-button {
+  background-color: #FE0072;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 1em;
+  margin: 0 5px;
+  border-radius: 5px;
+}
+
+.tab-button:hover {
+  background-color: #d40060;
+}
+
+.tab-content {
+  display: none;
+  padding: 20px;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.tab-content.active {
+  display: block;
+}

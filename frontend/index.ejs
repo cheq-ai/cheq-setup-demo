@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script
+      async
+      src="https://ob.dev.roundprinceforest.com/i/86236b7f11f14e894e0263ad7f7df9a0.js"
+      data-ch="cheq4ppc"
+      class="ct_clicktrue_50193"
+      data-jsonp="onCheqResponse"
+    ></script>
+    <script>
+      function openTab(event, tabId) {
+  const tabContent = document.getElementsByClassName("tab-content");
+  for (let i = 0; i < tabContent.length; i++) {
+    tabContent[i].style.display = "none";
+  }
+
+  const tabButtons = document.getElementsByClassName("tab-button");
+  for (let i = 0; i < tabButtons.length; i++) {
+    tabButtons[i].className = tabButtons[i].className.replace(" active", "");
+  }
+
+  document.getElementById(tabId).style.display = "block";
+  event.currentTarget.className += " active";
+}
+
+// Display the first tab by default
+document.addEventListener("DOMContentLoaded", function () {
+  document.querySelector(".tab-button").click();
+});
+
+    </script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Website</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <br>
+    <h1>Welcome to my demo website</h1>
+    <h3>This site illustrates Cheq's core capabilities</h3>
+
+    <hr />
+
+<div class="tabs">
+  
+  <button class="tab-button" onclick="openTab(event, 'tab1')">Defend (RTI)</button>
+  <button class="tab-button" onclick="openTab(event, 'tab2')">Form Guard (SLP)</button>
+</div>
+<br>
+<br>
+<br>
+    <div id="tab1" class="tab-content">
+      <h2> CHEQ Defend </h2>
+      <p>Clicking the Subscribe button takes you to the Subscribe page.</p>
+      <p>
+        UNLESS - you are an invalid visit. In that case you will be redirected to
+        a custom url 🤖👋🏼
+      </p>
+      <span>
+        <b>setting custom bot user-agent:</b> Mozilla/5.0 (compatible; Googlebot/2.1;
+        +http://www.google.com/bot.html)
+      </span>
+      <br/>
+      <button><a href="<%- baseUrl %>/subscribe">Subscribe</a></button>
+    </div>
+
+    <div id="tab2" class="tab-content">
+      <!-- Empty content for now -->
+    </div
