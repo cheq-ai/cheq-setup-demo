@@ -37,10 +37,6 @@ app.get("/subscribe", middleware(eventsTypes.SUBSCRIBE), function (req, res) {
 });
 
 app.get("/redirect", function (req, res) {
-  // const rtiRes = res.locals.rtiRes;
-  // const rtiResString = JSON.stringify(rtiRes, null, 2);
-  // console.log(rtiResString);
-
   res.render("redirect");
 });
 
