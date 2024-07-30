@@ -7,7 +7,7 @@ const path = require("path");
 const { rti, eventsTypes } = require("@cheq.ai/cheq-middlewares");
 const { apiEndpoints } = require("@cheq.ai/cheq-middlewares/config");
 const PORT = process.env.PORT || 5000;
-const baseUrl = `${process.env.BASE_URL}:${PORT}`;
+const baseUrl = `${process.env.BASE_URL}`;
 const options = {
   apiKey: process.env.API_KEY,
   tagHash: process.env.TAG_HASH,
@@ -31,7 +31,7 @@ app.set("views", path.join(__dirname, "frontend"));
 
 // Routes
 app.get("/", function (req, res) {
-  res.render("index", { baseUrl });
+  res.render("index");
 });
 app.get("/subscribe", middleware(eventsTypes.SUBSCRIBE), function (req, res) {
   const rtiRes = res.locals.rtiRes;
@@ -47,6 +47,3 @@ app.get("/redirect", function (req, res) {
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
-
-
-// BASE_URL Plaintext square-jennica-cheq-fcc8de3e.koyeb.app
