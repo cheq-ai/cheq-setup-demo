@@ -34,8 +34,7 @@ app.get("/", function (req, res) {
   res.render("index");
 });
 app.get("/subscribe", middleware(eventsTypes.SUBSCRIBE), function (req, res) {
-  console.log('req:', req);
-  console.log('res:', res);
+  console.log('req ip:', getClientIp(req));
 
   const rtiRes = res.locals.rtiRes;
   const rtiResString = JSON.stringify(rtiRes, null, 2);
@@ -50,3 +49,29 @@ app.get("/redirect", function (req, res) {
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
+
+
+
+
+function getClientIp(req) {
+  let ipAddress = req.ip;
+
+  // Handle IPv6 loopback address
+  if (ipAddress === '::1' || ipAddress === '::ffff:127.0.0.1') {
+    ipAddress = '127.0.0.1';
+  }
+
+  // Check for IPv6 address and convert to IPv4 if necessary
+  if (ipAddress.includes('::ffff:')) {
+    ipAddress = ipAddress.split('::ffff:')[1];
+  }
+
+  // Handle x-forwarded-for header if behind a proxy
+  const forwardedIpsStr = req.header('x-forwarded-for');
+  if (forwardedIpsStr) {
+    const forwardedIps = forwardedIpsStr.split(',');
+    ipAddress = forwardedIps[0].trim();
+  }
+
+  return ipAddress;
+}
