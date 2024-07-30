@@ -1,5 +1,0 @@
-adserver env: staging
-network id 8914
-searchid/tagid 50193
-
-invoke: npm run start -> go to localhost:5000
