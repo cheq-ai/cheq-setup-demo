@@ -34,6 +34,9 @@ app.get("/", function (req, res) {
   res.render("index");
 });
 app.get("/subscribe", middleware(eventsTypes.SUBSCRIBE), function (req, res) {
+  console.log('req:', req);
+  console.log('res:', res);
+
   const rtiRes = res.locals.rtiRes;
   const rtiResString = JSON.stringify(rtiRes, null, 2);
 
