@@ -21,3 +21,11 @@ It intercepts the request to the 'Subscribe' page and validates the visit. If in
 ## Contribution
 
 If you want to contribute, the repo is here: https://github.com/cheq-ai/cheq-setup-demo
+
+## references:
+
+Host: https://app.koyeb.com/
+Demo site: https://square-jennica-cheq-fcc8de3e.koyeb.app/
+Demo site repo: https://github.com/cheq-ai/cheq-setup-demo
+rti middleware repo: https://github.com/cheq-ai/cheq-middlewares
+rti middleware npm: https://www.npmjs.com/package/@cheq.ai/cheq-middlewares?activeTab=code
