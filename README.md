@@ -6,6 +6,8 @@ This site should be publicly available at https://prospective-viki-cheq-5aade980
 
 ## Getting Started
 
+run locally: npm run start
+
 1. Go to the website
 2. Click any link -> everything works
 3. Act as an invalid user by editing your user-agent string to a bot: **Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)**
