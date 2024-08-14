@@ -9,8 +9,10 @@ const PORT = process.env.PORT || 5000;
 
 // Setup
 const rtiMiddleware = rti(rtiOptions);
-// const slpMiddleware = slp(slpOptions);
+const slpMiddleware = slp(slpOptions);
 app.use(express.static(path.join(__dirname, "./frontend")));
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "frontend"));
 
@@ -28,6 +30,15 @@ app.get("/subscribe", rtiMiddleware(eventsTypes.SUBSCRIBE), function (req, res) 
 
 app.get("/redirect", function (req, res) {
   res.render("redirect");
+});
+
+app.post('/form-submit', slpMiddleware(eventsTypes.FORM_SUBMISSION), (req, res) => {
+  const slpRes = res.locals.slpRes;
+  console.log('hi', slpRes)
+
+
+  // const formData = req.body;
+  // res.json({ message: 'Form data received', formData });
 });
 
 // Start

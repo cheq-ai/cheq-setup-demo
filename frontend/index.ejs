@@ -1,9 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <script async src="https://ob.dev.7roundprince.com/i/d7428fa06242ed9fdf2b136e70837e35.js" data-ch="cheq4ppc" class="ct_clicktrue_49472" data-jsonp="onCheqResponse"></script>
+    <script
+      async
+      src="https://ob.dev.7roundprince.com/i/d7428fa06242ed9fdf2b136e70837e35.js"
+      data-ch="cheq4ppc"
+      class="ct_clicktrue_49472"
+      data-jsonp="onCheqResponse"
+    ></script>
     <script src="script.js"></script>
     <script src="on-cheq-response.js"></script>
+    <script src="handle-form-submit.js"></script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
@@ -45,7 +52,11 @@
     <div id="tab2" class="tab-content">
       <div id="contact-us-form-container">
         <h2>Contact Us</h2>
-        <form class="subscribe-form">
+        <form
+          id="contact-us-form"
+          class="subscribe-form"
+          onsubmit="handleSubmit(event)"
+        >
           <div class="form-group">
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" required />
@@ -58,7 +69,7 @@
             <label for="phone">Phone Number:</label>
             <input type="tel" id="phone" name="phone" required />
           </div>
-          <input type="hidden" id="hiddenField" name="cq_req_id" />
+          <input type="hidden" id="hiddenField" name="RequestId" />
           <button type="submit">Submit</button>
         </form>
       </div>
