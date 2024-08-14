@@ -1,42 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <script
-      async
-      src="https://ob.dev.roundprinceforest.com/i/86236b7f11f14e894e0263ad7f7df9a0.js"
-      data-ch="cheq4ppc"
-      class="ct_clicktrue_50193"
-      data-jsonp="onCheqResponse"
-    ></script>
-    <script>
-      function openTab(event, tabId) {
-        const tabContent = document.getElementsByClassName("tab-content");
-        for (let i = 0; i < tabContent.length; i++) {
-          tabContent[i].style.display = "none";
-        }
-
-        const tabButtons = document.getElementsByClassName("tab-button");
-        for (let i = 0; i < tabButtons.length; i++) {
-          tabButtons[i].className = tabButtons[i].className.replace(
-            " active",
-            ""
-          );
-        }
-
-        document.getElementById(tabId).style.display = "block";
-        event.currentTarget.className += " active";
-      }
-
-      // Display the first tab by default
-      document.addEventListener("DOMContentLoaded", function () {
-        document.querySelector(".tab-button").click();
-      });
-    </script>
-
+    <script async src="https://ob.dev.7roundprince.com/i/d7428fa06242ed9fdf2b136e70837e35.js" data-ch="cheq4ppc" class="ct_clicktrue_49472" data-jsonp="onCheqResponse"></script>
+    <script src="script.js"></script>
+    <script src="on-cheq-response.js"></script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Website</title>
     <link rel="stylesheet" href="style.css" />
+    <title>My Website</title>
   </head>
   <body>
     <br />
@@ -72,7 +43,25 @@
     </div>
 
     <div id="tab2" class="tab-content">
-      <!-- Empty content for now -->
+      <div id="contact-us-form-container">
+        <h2>Contact Us</h2>
+        <form class="subscribe-form">
+          <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" required />
+          </div>
+          <input type="hidden" id="hiddenField" name="cq_req_id" />
+          <button type="submit">Submit</button>
+        </form>
+      </div>
     </div>
   </body>
 </html>

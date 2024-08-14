@@ -137,3 +137,40 @@ pre {
 .tab-content.active {
   display: block;
 }
+
+.subscribe-form {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 80%;
+  max-width: 400px;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: #333;
+  font-size: 1em;
+}
+
+.form-group input {
+  width: calc(100% - 20px);
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  font-size: 1em;
+  box-sizing: border-box;
+}
+
+#contact-us-form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
