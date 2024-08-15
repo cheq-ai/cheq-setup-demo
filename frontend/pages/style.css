@@ -92,8 +92,8 @@ button a:hover {
 }
 
 pre {
+  color: white;
   max-width: 90vw;
-  padding: 1em;
   background-color: #FE0072;
   text-align: left;
   margin-left: 100px;

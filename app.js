@@ -8,13 +8,13 @@ const { rti, slp, eventsTypes } = require("@cheq.ai/cheq-middlewares");
 const PORT = process.env.PORT || 5000;
 
 // Setup
+app.use(express.static(path.join(__dirname, './frontend')));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json())
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "frontend", "pages"));
 const rtiMiddleware = rti(rtiOptions);
 const slpMiddleware = slp(slpOptions);
-app.use(express.static(path.join(__dirname, "./frontend")));
-app.use(express.json())
-app.use(express.urlencoded({ extended: true }));
-app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "frontend"));
 
 // Routes
 app.get("/", function (req, res) {
@@ -33,12 +33,9 @@ app.get("/redirect", function (req, res) {
 });
 
 app.post('/form-submit', slpMiddleware(eventsTypes.FORM_SUBMISSION), (req, res) => {
-  const slpRes = res.locals.slpRes;
-  console.log('hi', slpRes)
+  const slpRes = res.locals.slpRes
 
-
-  // const formData = req.body;
-  // res.json({ message: 'Form data received', formData });
+  res.json(slpRes);
 });
 
 // Start

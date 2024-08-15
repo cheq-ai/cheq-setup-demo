@@ -1,10 +1,8 @@
 async function handleSubmit(event) {
   event.preventDefault();
 
-  const formData = new FormData(event.target); 
+  const formData = new FormData(event.target);
   const formObject = Object.fromEntries(formData.entries());
-
-  console.log(formObject)
 
   try {
     const response = await fetch("/form-submit", {
@@ -17,14 +15,13 @@ async function handleSubmit(event) {
 
     if (response.ok) {
       const data = await response.json();
-      console.log("Form submitted successfully:", data);
-      // Optionally, redirect or show a success message
+
+      document.getElementById('response').textContent = JSON.stringify(data, null, 2);
     } else {
       console.error("Error submitting form:", response.statusText);
-      // Optionally, show an error message
+      document.getElementById("response").textContent = JSON.stringify(response);
     }
   } catch (error) {
-    console.error("Error:", error);
-    // Optionally, show an error message
+    document.getElementById("response").textContent = JSON.stringify(error);
   }
 }
