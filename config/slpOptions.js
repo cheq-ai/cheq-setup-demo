@@ -1,4 +1,3 @@
-const { slpConfig } = require("@cheq.ai/cheq-middlewares/config");
 const dotenv = require("dotenv");
 dotenv.config();
 
