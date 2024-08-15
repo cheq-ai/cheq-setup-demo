@@ -21,6 +21,10 @@ app.get("/", function (req, res) {
   res.render("index");
 });
 
+app.get('/robots.txt', (req, res) => {
+  res.sendFile(path.join(__dirname, 'robots.txt'));
+});
+
 app.get("/subscribe", rtiMiddleware(eventsTypes.SUBSCRIBE), function (req, res) {
   const rtiRes = res.locals.rtiRes;
   const rtiResString = JSON.stringify(rtiRes, null, 2);
