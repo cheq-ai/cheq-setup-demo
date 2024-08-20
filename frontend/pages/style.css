@@ -53,12 +53,27 @@ h3 {
   color: #777;
 }
 
-h4 {
-  color: #FE0072;
-  font-size: 1em;
-  margin-bottom: 1em;
-  color: #777;
+.cheq-rti-response-homepage {
+  margin: 0 100px 100px 100px;
+  
+  h4 {
+    font-size: 1.1em;
+    margin-bottom: 1em;
+    color: black;
+    text-align: left;
+  }
+  
+  pre {
+    color: white;
+    background-color: #FE0072;
+    text-align: left;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    max-width: 100%;
+    margin: 0 0 0 0;
+  }
 }
+
 
 hr {
   width: 80%;

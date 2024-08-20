@@ -22,9 +22,11 @@
     <h3>This site illustrates Cheq's core capabilities</h3>
 
     <hr />
-    
-    <h4>Homepage RTI Response</h4>
-    <pre><span><%- rtiResString %></span></pre>
+
+    <div class="cheq-rti-response-homepage">
+      <h4>Homepage RTI Response:</h4>
+      <pre><span><%- rtiResString %></span></pre>
+    </div>
 
     <div class="tabs">
       <button class="tab-button" onclick="openTab(event, 'tab1')">
@@ -75,7 +77,9 @@
           <input type="hidden" id="hiddenField" name="RequestId" />
           <button type="submit">Submit</button>
         </form>
-        <code><pre><span id="response"></span></pre></code>
+        <code>
+          <pre><span id="response"></span></pre>
+        </code>
       </div>
     </div>
   </body>
