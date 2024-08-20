@@ -17,8 +17,11 @@ const rtiMiddleware = rti(rtiOptions);
 const slpMiddleware = slp(slpOptions);
 
 // Routes
-app.get("/",rtiMiddleware(eventsTypes.PAGE_LOAD), function (req, res) {
-  res.render("index");
+app.get("/", rtiMiddleware(eventsTypes.PAGE_LOAD), function (req, res) {
+  const rtiRes = res.locals.rtiRes;
+  const rtiResString = JSON.stringify(rtiRes, null, 2);
+
+  res.render("index", { rtiResString });
 });
 
 app.get('/robots.txt', (req, res) => {
@@ -46,3 +49,4 @@ app.post('/form-submit', slpMiddleware(eventsTypes.FORM_SUBMISSION), (req, res) 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
+

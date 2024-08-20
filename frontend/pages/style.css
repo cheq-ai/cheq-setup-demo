@@ -47,7 +47,15 @@ h1 {
 }
 
 h3 {
+  color: #FE0072;
   font-size: 1.5em;
+  margin-bottom: 1em;
+  color: #777;
+}
+
+h4 {
+  color: #FE0072;
+  font-size: 1em;
   margin-bottom: 1em;
   color: #777;
 }
