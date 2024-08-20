@@ -17,7 +17,7 @@ const rtiMiddleware = rti(rtiOptions);
 const slpMiddleware = slp(slpOptions);
 
 // Routes
-app.get("/", function (req, res) {
+app.get("/",rtiMiddleware(eventsTypes.PAGE_LOAD), function (req, res) {
   res.render("index");
 });
 
