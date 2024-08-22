@@ -29,10 +29,7 @@ app.get('/robots.txt', (req, res) => {
 });
 
 app.get("/subscribe", rtiMiddleware(eventsTypes.SUBSCRIBE), function (req, res) {
-  const rtiRes = res.locals.rtiRes;
-  const rtiResString = JSON.stringify(rtiRes, null, 2);
-
-  res.render("subscribe", { rtiResString });
+  res.json(res.locals.rtiRes);
 });
 
 app.get("/redirect", function (req, res) {

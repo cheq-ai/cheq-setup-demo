@@ -53,7 +53,7 @@ h3 {
   color: #777;
 }
 
-.cheq-rti-response-homepage {
+#cheq-rti-response-homepage, #cheq-rti-response-subscribe {
   margin: 0 100px 100px 100px;
   
   h4 {

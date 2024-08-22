@@ -17,10 +17,15 @@ async function handleSubmit(event) {
     if (response.ok) {
       const data = await response.json();
 
-      document.getElementById('response').textContent = JSON.stringify(data, null, 2);
+      document.getElementById("response").textContent = JSON.stringify(
+        data,
+        null,
+        2
+      );
     } else {
       console.error("Error submitting form:", response.statusText);
-      document.getElementById("response").textContent = JSON.stringify(response);
+      document.getElementById("response").textContent =
+        JSON.stringify(response);
     }
   } catch (error) {
     document.getElementById("response").textContent = JSON.stringify(error);
@@ -29,14 +34,17 @@ async function handleSubmit(event) {
 
 async function handleSubscribePage(event) {
   const requestId = sessionStorage.getItem("RequestId");
-  
-  fetch('/subscribe', {
-    method: 'GET',
+
+  fetch("/subscribe", {
+    method: "GET",
     headers: {
-      'Request-Id': requestId
-    }
-  }).then(response => response.text())
-    .then(data => {
-      console.log(data)
+      "Request-Id": requestId,
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      document.getElementById("cheq-rti-response-subscribe").style.display = "block";
+      const rtiResContainer = document.getElementById("rti-response-container");
+      rtiResContainer.innerHTML = JSON.stringify(data, null, 2);
     });
 }
