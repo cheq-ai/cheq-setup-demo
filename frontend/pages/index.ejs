@@ -51,7 +51,7 @@
         Googlebot/2.1; +http://www.google.com/bot.html)
       </span>
       <br />
-      <button><a href="/subscribe">Subscribe</a></button>
+      <button onclick="handleSubscribePage(event)"><a>Subscribe</a></button>
     </div>
 
     <div id="tab2" class="tab-content">
@@ -74,7 +74,6 @@
             <label for="phone">Phone Number:</label>
             <input type="tel" id="phone" name="phone" required />
           </div>
-          <input type="hidden" id="hiddenField" name="RequestId" />
           <button type="submit">Submit</button>
         </form>
         <code>

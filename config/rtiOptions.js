@@ -16,6 +16,7 @@ const rtiOptions = {
   callback: function (req, res, next) {
     res.sendFile(path.join(__dirname, "../frontend/captcha.html"));
   },
+  sessionSyncMode: "none",
 };
 
 module.exports = rtiOptions;

@@ -1,3 +1,3 @@
 function onCheqResponse(argument1, RequestId) {
-  document.getElementById("hiddenField").value = RequestId;
+  sessionStorage.setItem("RequestId", RequestId); 
 }

@@ -3,6 +3,7 @@ async function handleSubmit(event) {
 
   const formData = new FormData(event.target);
   const formObject = Object.fromEntries(formData.entries());
+  formObject["RequestId"] = sessionStorage.getItem("RequestId");
 
   try {
     const response = await fetch("/form-submit", {
@@ -24,4 +25,18 @@ async function handleSubmit(event) {
   } catch (error) {
     document.getElementById("response").textContent = JSON.stringify(error);
   }
+}
+
+async function handleSubscribePage(event) {
+  const requestId = sessionStorage.getItem("RequestId");
+  
+  fetch('/subscribe', {
+    method: 'GET',
+    headers: {
+      'Request-Id': requestId
+    }
+  }).then(response => response.text())
+    .then(data => {
+      console.log(data)
+    });
 }
