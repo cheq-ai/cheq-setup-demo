@@ -3,7 +3,7 @@ async function handleSubscribe(event, sessionSyncMode) {
     method: "GET",
     headers: {
       "User-Agent": navigator.userAgent,
-      "cookie": document.cookie.split('; ').find(part => part.startsWith('_cheq_rti=')),
+      "cookie": document.cookie?.split('; ').find(part => part.startsWith('_cheq_rti=')) || undefined,
       "Request-Id": sessionStorage.getItem("RequestId")
     },
   })
