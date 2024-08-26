@@ -40,7 +40,22 @@ app.get("/subscribe-requestid", createRtiMiddleware("requestId","v1",eventsTypes
 
 // ** Form-Guard Routes ** //
   // v1 Regular Flow
-app.post('/form-submit', createSlpMiddleware("fast","v1",eventsTypes.SUBSCRIBE), (req, res) => {
+app.post('/form-submit-none', createSlpMiddleware("fast","none","v1",eventsTypes.SUBSCRIBE), (req, res) => {
+  const slpRes = res.locals.slpRes
+
+  res.json(slpRes);
+});
+app.post('/form-submit-banrti', createSlpMiddleware("fast","banRti","v1",eventsTypes.SUBSCRIBE), (req, res) => {
+  const slpRes = res.locals.slpRes
+
+  res.json(slpRes);
+});
+app.post('/form-submit-rticookie', createSlpMiddleware("fast","rtiCookie","v1",eventsTypes.SUBSCRIBE), (req, res) => {
+  const slpRes = res.locals.slpRes
+
+  res.json(slpRes);
+});
+app.post('/form-submit-requestid', createSlpMiddleware("fast","requestId","v1",eventsTypes.SUBSCRIBE), (req, res) => {
   const slpRes = res.locals.slpRes
 
   res.json(slpRes);

@@ -1,4 +1,7 @@
 function openTab(event, tabId) {
+  console.log(document.getElementById(tabId))
+  console.log(document.getElementById(tabId))
+  console.log(document.getElementById(tabId))
   const tabContent = document.getElementsByClassName("tab-content");
   for (let i = 0; i < tabContent.length; i++) {
     tabContent[i].style.display = "none";
@@ -12,6 +15,10 @@ function openTab(event, tabId) {
     );
   }
 
-  document.getElementById(tabId).style.display = "block";
+  if (document.getElementById(tabId).id === "tab-defend") {
+    document.getElementById(tabId).style.display = "block";
+  } else {
+    document.getElementById(tabId).style.display = "flex";
+  }
   event.currentTarget.className += " active";
 }

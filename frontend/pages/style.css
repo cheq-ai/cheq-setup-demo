@@ -161,11 +161,11 @@ pre {
 }
 
 .subscribe-form {
+  width: 100%;
   background-color: white;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 80%;
   max-width: 400px;
   margin-bottom: 20px;
 }
@@ -191,8 +191,21 @@ pre {
   box-sizing: border-box;
 }
 
-#contact-us-form-container {
+#tab-defend {
+  display: block;
+}
+
+#tab-formguard {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.contact-us-form-container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 25%;
 }
+

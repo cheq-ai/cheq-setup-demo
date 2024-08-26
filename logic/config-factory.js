@@ -17,7 +17,7 @@ function createRtiMiddleware(sessionSyncMode, apiVersion, eventType) {
     },
     redirectUrl: `/redirect`,
     callback: function (req, res, next) {
-      res.sendFile(path.join(__dirname, "../frontend/captcha.html"));
+      res.sendFile(path.join(__dirname, "../frontend/pages/captcha.html"));
     },
     sessionSyncMode, // banRti OR rtiCookie OR requestId OR none
   };
@@ -25,7 +25,7 @@ function createRtiMiddleware(sessionSyncMode, apiVersion, eventType) {
   return rti(rtiOptions)(eventType);
 }
 
-function createSlpMiddleware(mode, apiVersion, eventType) {
+function createSlpMiddleware(mode, sessionSyncMode, apiVersion, eventType) {
   const slpOptions = {
     apiKey: process.env.API_KEY,
     tagHash: process.env.TAG_HASH,
@@ -33,6 +33,7 @@ function createSlpMiddleware(mode, apiVersion, eventType) {
     apiEndpoint: "https://obs.dev.cheqzone.com",
     mode,
     timeout: null,
+    sessionSyncMode, // banRti OR rtiCookie OR requestId OR none
   };
 
   return slp(slpOptions)(eventType);

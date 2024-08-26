@@ -15,7 +15,7 @@ async function handleSubscribe(event, sessionSyncMode) {
     });
 }
 
-async function handleSubmit(event) {
+async function handleSubmit(event, sessionSyncMode) {
   event.preventDefault();
 
   const formData = new FormData(event.target);
@@ -23,22 +23,20 @@ async function handleSubmit(event) {
   formObject["RequestId"] = sessionStorage.getItem("RequestId");
 
   try {
-    const response = await fetch("/form-submit", {
+    const response = await fetch(`/form-submit-${sessionSyncMode}`, {
       method: "POST",
       body: JSON.stringify(formObject),
       headers: {
         "Content-Type": "application/json",
+        "User-Agent": navigator.userAgent,
+        "cookie": document.cookie?.split('; ').find(part => part.startsWith('_cheq_rti=')) || undefined,
       },
     });
 
     if (response.ok) {
       const data = await response.json();
 
-      document.getElementById("response").textContent = JSON.stringify(
-        data,
-        null,
-        2
-      );
+      document.getElementById("response").textContent = JSON.stringify(data,null,2);
     } else {
       console.error("Error submitting form:", response.statusText);
       document.getElementById("response").textContent = JSON.stringify(response);
