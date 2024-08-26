@@ -1,3 +1,20 @@
+async function handleSubscribe(event, sessionSyncMode) {
+  fetch(`/subscribe-${sessionSyncMode}`, {
+    method: "GET",
+    headers: {
+      "User-Agent": navigator.userAgent,
+      "cookie": document.cookie.split('; ').find(part => part.startsWith('_cheq_rti=')),
+      "Request-Id": sessionStorage.getItem("RequestId")
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      document.getElementById("cheq-rti-response-subscribe").style.display = "block";
+      const rtiResContainer = document.getElementById("rti-response-container");
+      rtiResContainer.innerHTML = JSON.stringify(data, null, 2);
+    });
+}
+
 async function handleSubmit(event) {
   event.preventDefault();
 
@@ -24,27 +41,11 @@ async function handleSubmit(event) {
       );
     } else {
       console.error("Error submitting form:", response.statusText);
-      document.getElementById("response").textContent =
-        JSON.stringify(response);
+      document.getElementById("response").textContent = JSON.stringify(response);
     }
   } catch (error) {
     document.getElementById("response").textContent = JSON.stringify(error);
   }
 }
 
-async function handleSubscribePage(event) {
-  const requestId = sessionStorage.getItem("RequestId");
 
-  fetch("/subscribe", {
-    method: "GET",
-    headers: {
-      "Request-Id": requestId,
-    },
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      document.getElementById("cheq-rti-response-subscribe").style.display = "block";
-      const rtiResContainer = document.getElementById("rti-response-container");
-      rtiResContainer.innerHTML = JSON.stringify(data, null, 2);
-    });
-}

@@ -8,9 +8,9 @@
       class="ct_clicktrue_49472"
       data-jsonp="onCheqResponse"
     ></script>
-    <script src="../scripts/script.js"></script>
+    <script src="../scripts/ui-script.js"></script>
     <script src="../scripts/on-cheq-response.js"></script>
-    <script src="../scripts/handle-form-submit.js"></script>
+    <script src="../scripts/handle-events.js"></script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="pages/style.css" />
@@ -42,19 +42,20 @@
     <div id="tab1" class="tab-content">
       <h2>CHEQ Defend</h2>
       <p>
-        Clicking the Subscribe button sends an RTI request with the event of
-        SUBSCRIBE
+        Clicking the Subscribe button sends an RTI request with the event of SUBSCRIBE
       </p>
       <p>
-        UNLESS - you are an invalid visit. In that case you will be redirected
-        to a custom url 🤖👋🏼
+        UNLESS - you are an invalid visit. In that case you will receive a 'redirect' html file as a network response 🤖👋🏼
       </p>
       <span>
         <b>setting custom invalid bot user-agent:</b> Mozilla/5.0 (compatible;
         Googlebot/2.1; +http://www.google.com/bot.html)
       </span>
       <br />
-      <button onclick="handleSubscribePage(event)"><a>Subscribe</a></button>
+      <button onclick="handleSubscribe(event, 'none')"><a>Subscribe - none</a></button>
+      <button onclick="handleSubscribe(event, 'banrti')"><a>Subscribe - Ban RTI</a></button>
+      <button onclick="handleSubscribe(event, 'rticookie')"><a>Subscribe - RTI Cookie</a></button>
+      <button onclick="handleSubscribe(event, 'requestid')"><a>Subscribe - Request ID</a></button>
 
       <div id="cheq-rti-response-subscribe" style="display: none">
         <h4>SUBSCRIBE RTI Response:</h4>
