@@ -7,6 +7,7 @@ function createRtiMiddleware(sessionSyncMode, apiVersion, eventType) {
   const rtiOptions = {
     apiKey: process.env.API_KEY,
     tagHash: process.env.TAG_HASH,
+    apiVersion,
     apiEndpoint: "https://obs.dev.cheqzone.com",
     mode: "blocking",
     timeout: null,
@@ -28,6 +29,7 @@ function createSlpMiddleware(mode, apiVersion, eventType) {
   const slpOptions = {
     apiKey: process.env.API_KEY,
     tagHash: process.env.TAG_HASH,
+    apiVersion,
     apiEndpoint: "https://obs.dev.cheqzone.com",
     mode,
     timeout: null,
