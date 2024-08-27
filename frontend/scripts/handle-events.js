@@ -1,5 +1,5 @@
-async function handleSubscribe(event, sessionSyncMode) {
-  fetch(`/subscribe-${sessionSyncMode}`, {
+async function handleSubscribe(event, sessionSyncMode, apiVersion) {
+  fetch(`/subscribe-${sessionSyncMode}-${apiVersion}`, {
     method: "GET",
     headers: {
       "User-Agent": navigator.userAgent,
