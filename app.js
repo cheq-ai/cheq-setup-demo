@@ -3,7 +3,7 @@ const app = express();
 const path = require("path");
 const PORT = process.env.PORT || 5000;
 const { eventsTypes } = require("@cheq.ai/cheq-middlewares");
-const { createRtiMiddleware, createSlpMiddleware } = require('./logic/config-factory');
+const { createRtiMiddleware, createSlpMiddleware } = require('./config/config-factory');
 
 // Setup
 app.use(express.static(path.join(__dirname, './frontend')));
