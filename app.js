@@ -82,7 +82,7 @@ app.post('/form-submit-requestid', createSlpMiddleware("fast","requestId","v1",e
 
 // ** Other Routes ** //
 app.get("/redirect", function (req, res) {
-  res.json("BLOCKED! 🤖👋🏼");
+  res.json("BLOCKED AND REDIRECTED! 🤖👋🏼");
 });
 app.get('/robots.txt', (req, res) => {
   res.sendFile(path.join(__dirname, 'robots.txt'));

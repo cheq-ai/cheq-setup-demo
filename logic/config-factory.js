@@ -3,7 +3,7 @@ const dotenv = require("dotenv");
 dotenv.config();
 const { rti, slp } = require("@cheq.ai/cheq-middlewares");
 
-function createRtiMiddleware(sessionSyncMode, apiVersion, eventType, blockingRedirectActive) {
+function createRtiMiddleware(sessionSyncMode, apiVersion, eventType, blockingActive) {
   const rtiOptions = {
     apiKey: process.env.API_KEY,
     tagHash: process.env.TAG_HASH,
@@ -12,8 +12,8 @@ function createRtiMiddleware(sessionSyncMode, apiVersion, eventType, blockingRed
     mode: "blocking",
     timeout: null,
     threatTypesCodes: {
-      blockRedirect: blockingRedirectActive ? [2, 3, 6, 11, 16, 18, 29, 10] : [],
-      captcha: [4, 5, 13, 15, 17, 7, 14],
+      blockRedirect: blockingActive ? [2, 3, 6, 11, 16, 18, 29, 10] : [],
+      captcha: blockingActive ? [4, 5, 13, 15, 17, 7, 14] : [],
     },
     redirectUrl: `/redirect`,
     callback: function (req, res, next) {
