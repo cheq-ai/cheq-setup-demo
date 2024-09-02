@@ -9,11 +9,11 @@ function createRtiMiddleware(sessionSyncMode, apiVersion, eventType, blockingAct
     tagHash: process.env.TAG_HASH,
     apiVersion,
     apiEndpoint: "https://obs.dev.cheqzone.com",
-    mode: "blocking",
+    mode: blockingActive ? "blocking" : "monitoring",
     timeout: null,
     threatTypesCodes: {
-      blockRedirect: blockingActive ? [2, 3, 6, 11, 16, 18, 29, 10] : [],
-      captcha: blockingActive ? [4, 5, 13, 15, 17, 7, 14] : [],
+      blockRedirect: [2, 3, 6, 11, 16, 18, 29, 10],
+      captcha: [4, 5, 13, 15, 17, 7, 14],
     },
     redirectUrl: `/redirect`,
     callback: function (req, res, next) {
