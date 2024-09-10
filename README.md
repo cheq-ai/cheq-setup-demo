@@ -4,9 +4,11 @@ This is a simple demo site that demonstrates cheq's adserver/core functionality.
 This site should be publicly available at https://square-jennica-cheq-fcc8de3e.koyeb.app/   
 core automation project: https://gitlab.com/ct-dev/qa/core-test-automation    
 
-## Getting Started
+## Run Locally
 
-run locally: npm run start -> go to http://localhost:5000
+npm install  
+modify node_modules @cheq.ai/cheq-middlewares lib utils requestBuilder.js with a random IP value instead of this: // reqParams[rtiParams.CLIENT_IP] = getHeaderByName(req.headers, 'X-Forwarded-For');  
+npm run start -> go to http://localhost:5000
 
 ## Behind the Scenes
 
