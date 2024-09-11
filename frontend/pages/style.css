@@ -208,3 +208,8 @@ pre {
   width: 25%;
 }
 
+#btn-logout {
+  position: absolute;
+  top: 15px;
+  right: 30px;
+}

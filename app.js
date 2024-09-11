@@ -4,13 +4,22 @@ const path = require("path");
 const PORT = process.env.PORT || 5000;
 const { eventsTypes } = require("@cheq.ai/cheq-middlewares");
 const { createRtiMiddleware, createSlpMiddleware } = require('./config/config-factory');
+const { auth } = require('express-openid-connect'); // Auth0
+const { authConfig } = require('./config/auth0'); // Auth0
 
-// Setup
+// Setup & Middleware
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "frontend", "pages"));
 app.use(express.static(path.join(__dirname, './frontend')));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json())
-app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "frontend", "pages"));
+app.use(auth(authConfig));
+app.use((req, res, next) => {
+  if (!req.oidc.isAuthenticated()) {
+    return res.redirect('/login');
+  }
+  next();
+});
 
 // Routes
 app.get("/", createRtiMiddleware("none", "v1", eventsTypes.PAGE_LOAD, false), function (req, res) {
