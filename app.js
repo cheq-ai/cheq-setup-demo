@@ -1,47 +1,104 @@
 const express = require("express");
 const app = express();
 const path = require("path");
-const { rti, eventsTypes } = require("@cheq.ai/cheq-middlewares");
-const { apiEndpoints } = require("@cheq.ai/cheq-middlewares/config");
 const PORT = process.env.PORT || 5000;
-const options = {
-  apiKey: "ca9635f4-81fc-4dc4-9f2f-d4a78680787f",
-  tagHash: "86236b7f11f14e894e0263ad7f7df9a0",
-  apiEndpoint: apiEndpoints.DEV,
-  mode: "blocking",
-  threatTypesCodes: {
-    blockRedirect: [2, 3, 6, 11, 16, 18, 29, 10], // threat_type 10 = Malicious Bots / threat_type 3 = Automation tool -> bot useragent string: Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html) -> block & redirect (redirectUrl)
-    captcha: [4, 5, 13, 15, 17, 7, 14], // threat_type 14 = VPN -> navigate to captcha.html (callback)
-  },
-  redirectUrl: "http://localhost:5000/redirect", // TODO: CHANGE LOCALHOST TO EXTERNAL HOST
-  callback: function (req, res, next) {
-    res.sendFile(path.join(__dirname, "/frontend/captcha.html"));
-  },
-};
+const { eventsTypes } = require("@cheq.ai/cheq-middlewares");
+const { createRtiMiddleware, createSlpMiddleware } = require('./config/config-factory');
+const { auth } = require('express-openid-connect'); // Auth0
+const { authConfig } = require('./config/auth0'); // Auth0
 
-// Setup
-const middleware = rti(options);
-app.use(express.static(path.join(__dirname, "./frontend")));
+// Setup & Middleware
 app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "frontend"));
+app.set("views", path.join(__dirname, "frontend", "pages"));
+app.use(express.static(path.join(__dirname, './frontend')));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json())
+app.use(auth(authConfig));
+app.use((req, res, next) => {
+  if (!req.oidc.isAuthenticated()) {
+    return res.redirect('/login');
+  }
+  next();
+});
 
 // Routes
-app.get("/subscribe", middleware(eventsTypes.SUBSCRIBE), function (req, res) {
+app.get("/", createRtiMiddleware("none", "v1", eventsTypes.PAGE_LOAD, false), function (req, res) {
   const rtiRes = res.locals.rtiRes;
   const rtiResString = JSON.stringify(rtiRes, null, 2);
 
-  res.render("subscribe", { rtiResString });
+  res.render("index", { rtiResString });
 });
 
-app.get("/redirect", function (req, res) {
-  // const rtiRes = res.locals.rtiRes;
-  // const rtiResString = JSON.stringify(rtiRes, null, 2);
-  // console.log(rtiResString);
+// ** Defend Routes ** //
+  // API V1 //
+   // All client-server sync methods
+app.get("/subscribe-none-v1", createRtiMiddleware("none","v1",eventsTypes.SUBSCRIBE, true), function (req, res) {
+  res.json(res.locals.rtiRes);
+});
+  // banRti 
+app.get("/subscribe-banrti-v1", createRtiMiddleware("banRti","v1",eventsTypes.SUBSCRIBE, true), function (req, res) {
+  res.json(res.locals.rtiRes);
+});
+  // rtiCookie
+app.get("/subscribe-rticookie-v1", createRtiMiddleware("rtiCookie","v1",eventsTypes.SUBSCRIBE, true), function (req, res) {
+  res.json(res.locals.rtiRes);
+});
+  // requestId
+app.get("/subscribe-requestid-v1", createRtiMiddleware("requestId","v1",eventsTypes.SUBSCRIBE, true), function (req, res) {
+  res.json(res.locals.rtiRes);
+});
 
-  res.render("redirect");
+  // API V3 //
+   // All client-server sync methods
+app.get("/subscribe-none-v3", createRtiMiddleware("none","v3",eventsTypes.SUBSCRIBE, true), function (req, res) {
+  res.json(res.locals.rtiRes);
+});
+  // banRti 
+app.get("/subscribe-banrti-v3", createRtiMiddleware("banRti","v3",eventsTypes.SUBSCRIBE, true), function (req, res) {
+  res.json(res.locals.rtiRes);
+});
+  // rtiCookie
+app.get("/subscribe-rticookie-v3", createRtiMiddleware("rtiCookie","v3",eventsTypes.SUBSCRIBE, true), function (req, res) {
+  res.json(res.locals.rtiRes);
+});
+  // requestId
+app.get("/subscribe-requestid-v3", createRtiMiddleware("requestId","v3",eventsTypes.SUBSCRIBE, true), function (req, res) {
+  res.json(res.locals.rtiRes);
+});
+
+// ** Form-Guard Routes ** //
+  // v1 Regular Flow
+app.post('/form-submit-none', createSlpMiddleware("fast","none","v1",eventsTypes.SUBSCRIBE), (req, res) => {
+  const slpRes = res.locals.slpRes
+
+  res.json(slpRes);
+});
+app.post('/form-submit-banrti', createSlpMiddleware("fast","banRti","v1",eventsTypes.SUBSCRIBE), (req, res) => {
+  const slpRes = res.locals.slpRes
+
+  res.json(slpRes);
+});
+app.post('/form-submit-rticookie', createSlpMiddleware("fast","rtiCookie","v1",eventsTypes.SUBSCRIBE), (req, res) => {
+  const slpRes = res.locals.slpRes
+
+  res.json(slpRes);
+});
+app.post('/form-submit-requestid', createSlpMiddleware("fast","requestId","v1",eventsTypes.SUBSCRIBE), (req, res) => {
+  const slpRes = res.locals.slpRes
+
+  res.json(slpRes);
+});
+
+// ** Other Routes ** //
+app.get("/redirect", function (req, res) {
+  res.json("BLOCKED AND REDIRECTED! 🤖👋🏼");
+});
+app.get('/robots.txt', (req, res) => {
+  res.sendFile(path.join(__dirname, 'robots.txt'));
 });
 
 // Start Server
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
+
