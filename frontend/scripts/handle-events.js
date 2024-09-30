@@ -15,7 +15,7 @@ async function handleSubscribe(event, sessionSyncMode, apiVersion) {
     });
 }
 
-async function handleSubmit(event, sessionSyncMode) {
+async function handleSubmit(event, sessionSyncMode, apiVersion) {
   event.preventDefault();
 
   const formData = new FormData(event.target);
@@ -23,7 +23,7 @@ async function handleSubmit(event, sessionSyncMode) {
   formObject["RequestId"] = sessionStorage.getItem("RequestId");
 
   try {
-    const response = await fetch(`/form-submit-${sessionSyncMode}`, {
+    const response = await fetch(`/formsubmit-${sessionSyncMode}-${apiVersion}`, {
       method: "POST",
       body: JSON.stringify(formObject),
       headers: {

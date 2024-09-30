@@ -68,26 +68,48 @@ app.get("/subscribe-requestid-v3", createRtiMiddleware("requestId","v3",eventsTy
 
 // ** Form-Guard Routes ** //
   // v1 Regular Flow
-app.post('/form-submit-none', createSlpMiddleware("fast","none","v1",eventsTypes.SUBSCRIBE), (req, res) => {
+app.post('/formsubmit-none-v1', createSlpMiddleware("fast","none","v1",eventsTypes.SUBSCRIBE), (req, res) => {
   const slpRes = res.locals.slpRes
 
   res.json(slpRes);
 });
-app.post('/form-submit-banrti', createSlpMiddleware("fast","banRti","v1",eventsTypes.SUBSCRIBE), (req, res) => {
+app.post('/formsubmit-banrti-v1', createSlpMiddleware("fast","banRti","v1",eventsTypes.SUBSCRIBE), (req, res) => {
   const slpRes = res.locals.slpRes
 
   res.json(slpRes);
 });
-app.post('/form-submit-rticookie', createSlpMiddleware("fast","rtiCookie","v1",eventsTypes.SUBSCRIBE), (req, res) => {
+app.post('/formsubmit-rticookie-v1', createSlpMiddleware("fast","rtiCookie","v1",eventsTypes.SUBSCRIBE), (req, res) => {
   const slpRes = res.locals.slpRes
 
   res.json(slpRes);
 });
-app.post('/form-submit-requestid', createSlpMiddleware("fast","requestId","v1",eventsTypes.SUBSCRIBE), (req, res) => {
+app.post('/formsubmit-requestid-v1', createSlpMiddleware("fast","requestId","v1",eventsTypes.SUBSCRIBE), (req, res) => {
   const slpRes = res.locals.slpRes
 
   res.json(slpRes);
 });
+
+  // v1 Regular Flow
+  app.post('/formsubmit-none-v3', createSlpMiddleware("fast","none","v3",eventsTypes.SUBSCRIBE), (req, res) => {
+    const slpRes = res.locals.slpRes
+  
+    res.json(slpRes);
+  });
+  app.post('/formsubmit-banrti-v3', createSlpMiddleware("fast","banRti","v3",eventsTypes.SUBSCRIBE), (req, res) => {
+    const slpRes = res.locals.slpRes
+  
+    res.json(slpRes);
+  });
+  app.post('/formsubmit-rticookie-v3', createSlpMiddleware("fast","rtiCookie","v3",eventsTypes.SUBSCRIBE), (req, res) => {
+    const slpRes = res.locals.slpRes
+  
+    res.json(slpRes);
+  });
+  app.post('/formsubmit-requestid-v3', createSlpMiddleware("fast","requestId","v3",eventsTypes.SUBSCRIBE), (req, res) => {
+    const slpRes = res.locals.slpRes
+  
+    res.json(slpRes);
+  });
 
 // ** Other Routes ** //
 app.get("/redirect", function (req, res) {
