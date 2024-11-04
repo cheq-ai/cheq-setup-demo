@@ -71,6 +71,8 @@ app.get("/subscribe-requestid-v3", createRtiMiddleware("requestId","v3",eventsTy
 app.post('/formsubmit-none-v1', createSlpMiddleware("fast","none","v1",eventsTypes.SUBSCRIBE), (req, res) => {
   const slpRes = res.locals.slpRes
 
+  console.log(slpRes)
+
   res.json(slpRes);
 });
 app.post('/formsubmit-banrti-v1', createSlpMiddleware("fast","banRti","v1",eventsTypes.SUBSCRIBE), (req, res) => {

@@ -36,7 +36,7 @@ async function handleSubmit(event, sessionSyncMode, apiVersion) {
     if (response.ok) {
       const data = await response.json();
 
-      document.getElementById("response").textContent = JSON.stringify(data,null,2);
+      document.getElementById("event-response-el").textContent = JSON.stringify(data,null,2);
     } else {
       console.error("Error submitting form:", response.statusText);
       document.getElementById("response").textContent = JSON.stringify(response);
