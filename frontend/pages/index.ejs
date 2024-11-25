@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="pages/style.css" />
+    <title>CHEQ Core</title>
+  </head>
+  <body>
+    <div class="header">
+      <br />
+      <h1>Welcome to my demo website</h1>
+      <h3>This site illustrates Cheq's core capabilities</h3>
+      <a href="/logout" id="btn-logout">Logout</a>
+    </div>
+
+    <hr />
+
+    <h3>Choose Adserver Environment</h3>
+
+    <button class="env-button" onclick="openTab(event, 'tab-defend')">
+      <a href="/env-dev">Dev</a>
+    </button>
+    <button class="env-button" onclick="openTab(event, 'tab-formguard')">
+      <a href="/env-staging">Staging</a>
+    </button>
+    <button class="env-button">
+      <a href="/env-prod">Prod</a>
+    </button>
+  </body>
+</html>

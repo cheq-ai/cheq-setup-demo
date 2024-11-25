@@ -223,6 +223,12 @@ pre {
   right: 30px;
 }
 
+#btn-envs {
+  position: absolute;
+  top: 45px;
+  right: 30px;
+}
+
 code {
   width: 100%;
 }

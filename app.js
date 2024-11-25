@@ -25,6 +25,9 @@ app.use((req, res, next) => {
 });
 
 // Routes
+app.get("/", function (req, res) {
+  res.render("index");
+});
 app.use("", devRoutes);
 app.use("", stagingRoutes);
 app.use("", prodRoutes);
