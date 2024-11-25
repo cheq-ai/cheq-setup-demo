@@ -7,7 +7,6 @@ core automation project: https://gitlab.com/ct-dev/qa/core-test-automation
 ## Run Locally
 
 npm install  
-modify node_modules @cheq.ai/cheq-middlewares lib utils requestBuilder.js with a random IP value instead of this: // reqParams[rtiParams.CLIENT_IP] = getHeaderByName(req.headers, 'X-Forwarded-For');  
 npm run start -> go to http://localhost:5000
 
 ## Behind the Scenes

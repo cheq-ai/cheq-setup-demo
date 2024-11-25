@@ -3,12 +3,12 @@ const dotenv = require("dotenv");
 dotenv.config();
 const { rti, slp } = require("@cheq.ai/cheq-middlewares");
 
-function createRtiMiddleware(sessionSyncMode, apiVersion, eventType, blockingActive) {
+function createRtiMiddleware(sessionSyncMode, apiVersion, eventType, blockingActive, apiKey, tagHash, apiEndpoint) {
   const rtiOptions = {
-    apiKey: process.env.API_KEY,
-    tagHash: process.env.TAG_HASH,
+    apiKey,
+    tagHash,
     apiVersion,
-    apiEndpoint: "https://obs.dev.cheqzone.com",
+    apiEndpoint,
     mode: blockingActive ? "blocking" : "monitoring",
     timeout: null,
     threatTypesCodes: {
@@ -25,12 +25,12 @@ function createRtiMiddleware(sessionSyncMode, apiVersion, eventType, blockingAct
   return rti(rtiOptions)(eventType);
 }
 
-function createSlpMiddleware(mode, sessionSyncMode, apiVersion, eventType) {
+function createSlpMiddleware(mode, sessionSyncMode, apiVersion, eventType, apiKey, tagHash, apiEndpoint) {
   const slpOptions = {
-    apiKey: process.env.API_KEY,
-    tagHash: process.env.TAG_HASH,
+    apiKey,
+    tagHash,
     apiVersion,
-    apiEndpoint: "https://obs.dev.cheqzone.com",
+    apiEndpoint,
     mode,
     timeout: null,
     sessionSyncMode, // banRti OR rtiCookie OR requestId OR none
