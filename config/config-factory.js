@@ -12,8 +12,8 @@ function createRtiMiddleware(sessionSyncMode, apiVersion, eventType, blockingAct
     mode: blockingActive ? "blocking" : "monitoring",
     timeout: null,
     threatTypesCodes: {
-      blockRedirect: [2, 3, 6, 11, 16, 18, 29, 10],
-      captcha: [4, 5, 13, 15, 17, 7, 14],
+      blockRedirect: [],
+      captcha: [],
     },
     redirectUrl: `/redirect`,
     callback: function (req, res, next) {
