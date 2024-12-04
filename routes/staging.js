@@ -17,6 +17,12 @@ router.get("/env-staging", createRtiMiddleware("none", "v1", eventsTypes.PAGE_LO
 
     res.render("index-staging", { rtiResString });
 });
+router.get("/env-staging-consentmode", createRtiMiddleware("none", "v1", eventsTypes.PAGE_LOAD, false, apiKey, tagHash, adserverEndpoint), function (req, res) {
+    const rtiRes = res.locals.rtiRes;
+    const rtiResString = JSON.stringify(rtiRes, null, 2);
+
+    res.render("index-staging-consentmode", { rtiResString });
+});
 
 // ** Defend Routes ** //
   // API V1 //
