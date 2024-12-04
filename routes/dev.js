@@ -18,6 +18,13 @@ router.get("/env-dev", createRtiMiddleware("none", "v1", eventsTypes.PAGE_LOAD, 
     res.render("index-dev", { rtiResString });
 });
 
+router.get("/env-dev-consentmode", createRtiMiddleware("none", "v1", eventsTypes.PAGE_LOAD, false, apiKey, tagHash, adserverEndpoint), function (req, res) {
+    const rtiRes = res.locals.rtiRes;
+    const rtiResString = JSON.stringify(rtiRes, null, 2);
+
+    res.render("index-dev-consentmode", { rtiResString });
+});
+
 // ** Defend Routes ** //
   // API V1 //
 // All client-server sync methods
