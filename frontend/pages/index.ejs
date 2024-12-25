@@ -16,25 +16,47 @@
 
     <hr />
 
-    <h3>Choose Environment</h3>
+    <div class="env-section">
+      <h3>Dev</h3>
+      <button class="env-button" onclick="openTab(event, 'tab-defend')">
+        <a href="/env-dev">dev</a>
+      </button>
+      <button class="env-button" onclick="openTab(event, 'tab-defend')">
+        <a href="/env-dev-consentmode">dev - consent mode</a>
+      </button>
+    </div>
+    <hr />
 
-    <button class="env-button" onclick="openTab(event, 'tab-defend')">
-      <a href="/env-dev">dev</a>
-    </button>
-    <button class="env-button" onclick="openTab(event, 'tab-defend')">
-      <a href="/env-dev-consentmode">dev - consent mode</a>
-    </button>
-    <button class="env-button" onclick="openTab(event, 'tab-formguard')">
-      <a href="/env-staging">staging</a>
-    </button>
-    <button class="env-button" onclick="openTab(event, 'tab-formguard')">
-      <a href="/env-staging-consentmode">staging-consent mode</a>
-    </button>
-    <button class="env-button">
-      <a href="/env-prod">prod</a>
-    </button>
-    <button class="env-button">
-      <a href="/env-prod-consentmode">prod-consent mode</a>
-    </button>
+    <div class="env-section">
+      <h3>Staging</h3>
+      <button class="env-button" onclick="openTab(event, 'tab-formguard')">
+        <a href="/env-staging">staging</a>
+      </button>
+      <button class="env-button" onclick="openTab(event, 'tab-formguard')">
+        <a href="/env-staging-consentmode">staging-consent mode</a>
+      </button>
+    </div>
+    <hr />
+
+    <div class="env-section">
+      <h3>Prod</h3>
+      <button class="env-button">
+        <a href="/env-prod">prod</a>
+      </button>
+      <button class="env-button">
+        <a href="/env-prod-consentmode">prod-consent mode</a>
+      </button>
+    </div>
+
+    <hr />
+    <div class="env-section">
+      <h3>Forms</h3>
+      <button class="env-button">
+        <a href="/hubspot">Hubspot</a>
+      </button>
+      <button class="env-button">
+        <a href="/marketo">Marketo</a>
+      </button>
+    </div>
   </body>
 </html>

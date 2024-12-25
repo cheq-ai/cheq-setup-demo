@@ -31,6 +31,9 @@ app.get("/", function (req, res) {
 app.use("", devRoutes);
 app.use("", stagingRoutes);
 app.use("", prodRoutes);
+app.get("/hubspot", function (req, res) {
+  res.render("index-hubspot");
+});
 app.get("/redirect", function (req, res) {
   res.json("BLOCKED AND REDIRECTED! 🤖👋🏼");
 });
