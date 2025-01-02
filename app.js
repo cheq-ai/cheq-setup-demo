@@ -34,6 +34,9 @@ app.use("", prodRoutes);
 app.get("/hubspot", function (req, res) {
   res.render("index-hubspot");
 });
+app.get("/marketo", function (req, res) {
+  res.render("index-marketo");
+});
 app.get("/redirect", function (req, res) {
   res.json("BLOCKED AND REDIRECTED! 🤖👋🏼");
 });
