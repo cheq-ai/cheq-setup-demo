@@ -31,12 +31,20 @@ app.get("/", function (req, res) {
 app.use("", devRoutes);
 app.use("", stagingRoutes);
 app.use("", prodRoutes);
-app.get("/hubspot", function (req, res) {
-  res.render("index-hubspot");
+app.get("/hubspot-staging", function (req, res) {
+  res.render("index-hubspot-staging");
 });
-app.get("/marketo", function (req, res) {
-  res.render("index-marketo");
+app.get("/marketo-staging", function (req, res) {
+  res.render("index-marketo-staging");
 });
+
+app.get("/hubspot-prod", function (req, res) {
+  res.render("index-hubspot-prod");
+});
+app.get("/marketo-prod", function (req, res) {
+  res.render("index-marketo-prod");
+});
+
 app.get("/redirect", function (req, res) {
   res.json("BLOCKED AND REDIRECTED! 🤖👋🏼");
 });

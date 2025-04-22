@@ -5,6 +5,13 @@
       src="https://assets.adobedtm.com/2273b6608699/2aa59a6f14de/launch-a17e1d267a9c.min.js"
       async
     ></script>
+
+    <script
+      charset="utf-8"
+      type="text/javascript"
+      src="//js-eu1.hsforms.net/forms/embed/v2.js"
+    ></script>
+
     <script
       async
       src="https://obs.staging.cheqzone.com/sxp/i/a4ae17f5df2ce58b45a5f2a92399bcd7.js"
@@ -12,7 +19,6 @@
       class="ct_clicktrue_49440"
       data-jsonp="onCheqResponse"
     ></script>
-
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="pages/style.css" />
@@ -26,16 +32,19 @@
       <a href="/logout" id="btn-logout">Logout</a>
       <a href="/" id="btn-envs">Envs</a>
     </div>
-    <hr />
-    <header>
-      <h3>Marketo Form</h3>
-    </header>
 
-    <!-- Marketo Form -->
-    <script src="//576-EWM-928.mktoweb.com/js/forms2/js/forms2.min.js"></script>
-    <form id="mktoForm_1547"></form>
-    <script>
-      MktoForms2.loadForm("//576-EWM-928.mktoweb.com", "576-EWM-928", 1547);
-    </script>
+    <hr />
+
+    <header>
+      <h3>Hubspot Form - staging</h3>
+    </header>
+    <div id="form-container">
+      <script>
+        hbspt.forms.create({
+          portalId: "143865661",
+          formId: "96e9194e-8072-4b6a-a26b-58a762d7be22",
+        });
+      </script>
+    </div>
   </body>
 </html>
