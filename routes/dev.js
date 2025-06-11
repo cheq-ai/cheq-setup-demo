@@ -62,6 +62,24 @@ router.get("/subscribe-requestid-v3", createRtiMiddleware("requestId","v3",event
     res.json(res.locals.rtiRes);
 });
 
+// API V4 //
+// All client-server sync methods
+router.get("/subscribe-none-v4", createRtiMiddleware("none","v4",eventsTypes.SUBSCRIBE, true, apiKey, tagHash, adserverEndpoint), function (req, res) {
+    res.json(res.locals.rtiRes);
+});
+// banRti 
+router.get("/subscribe-banrti-v4", createRtiMiddleware("banRti","v4",eventsTypes.SUBSCRIBE, true, apiKey, tagHash, adserverEndpoint), function (req, res) {
+    res.json(res.locals.rtiRes);
+});
+// rtiCookie
+router.get("/subscribe-rticookie-v4", createRtiMiddleware("rtiCookie","v4",eventsTypes.SUBSCRIBE, true, apiKey, tagHash, adserverEndpoint), function (req, res) {
+    res.json(res.locals.rtiRes);
+});
+// requestId
+router.get("/subscribe-requestid-v4", createRtiMiddleware("requestId","v4",eventsTypes.SUBSCRIBE, true, apiKey, tagHash, adserverEndpoint), function (req, res) {
+    res.json(res.locals.rtiRes);
+});
+
 // ** Form-Guard Routes ** //
 // v1 Regular Flow
 router.post('/formsubmit-none-v1', createSlpMiddleware("fast","none","v1",eventsTypes.SUBSCRIBE, apiKey, tagHash, adserverEndpoint), (req, res) => {
