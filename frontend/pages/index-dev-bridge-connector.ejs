@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script async src="https://ob.dev.7roundprince.com/i/89146d04d94808bd58e12ebd98cd1c8f.js" data-ch="Bridge Connector"
+    class="ct_clicktrue_52493" data-jsonp="onCheqResponse"></script>
+  <script src="../scripts/ui-script.js"></script>
+  <script src="../scripts/on-cheq-response.js"></script>
+  <script src="../scripts/handle-events.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="pages/style.css" />
+  <title>Bridge connector e2e</title>
+</head>
+
+<body>
+  <div class="header">
+    <br />
+    <h1>Welcome to a demo website</h1>
+    <h3>This site illustrates Cheq's core capabilities</h3>
+    <h4>ENV: dev - Bridge connector e2e</h4>
+    <a href="/logout" id="btn-logout">Logout</a>
+    <a href="/" id="btn-envs">Envs</a>
+  </div>
+
+  <hr />
+
+  <div id="cheq-rti-response-homepage">
+    <h4>HOMEPAGE RTI Response:</h4>
+    <pre><span id="homepage-response-el"><%- rtiResString %></span></pre>
+  </div>
+</body>
+
+</html>
