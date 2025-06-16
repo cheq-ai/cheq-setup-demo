@@ -26,10 +26,14 @@ router.get("/env-dev-consentmode", createRtiMiddleware("none", "v1", eventsTypes
 });
 
 router.get("/env-dev-bridge-connector", createRtiMiddleware("none", "v1", eventsTypes.PAGE_LOAD, false, apiKey, tagHash, adserverEndpoint), function (req, res) {
-  const rtiRes = res.locals.rtiRes;
-  const rtiResString = JSON.stringify(rtiRes, null, 2);
+    const rtiRes = res.locals.rtiRes;
+    const rtiResString = JSON.stringify(rtiRes, null, 2);
 
-  res.render("index-dev-bridge-connector", { rtiResString });
+    res.render("index-dev-bridge-connector", { rtiResString });
+});
+
+router.get("/env-dev-v4", function (req, res) {
+    res.render("v4/index-dev");
 });
 
 // ** Defend Routes ** //

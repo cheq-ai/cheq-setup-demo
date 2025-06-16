@@ -30,6 +30,10 @@ router.get("/env-staging-bridge-connector", createRtiMiddleware("none", "v1", ev
     res.render("index-staging-bridge-connector", { rtiResString });
 });
 
+router.get("/env-staging-v4", function (req, res) {
+    res.render("v4/index-staging");
+});
+
 // ** Defend Routes ** //
   // API V1 //
 // All client-server sync methods

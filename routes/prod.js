@@ -30,6 +30,10 @@ router.get("/env-prod-bridge-connector", createRtiMiddleware("none", "v1", event
     res.render("index-prod-bridge-connector", { rtiResString });
 });
 
+router.get("/env-prod-v4", function (req, res) {
+    res.render("v4/index-prod");
+});
+
 // ** Defend Routes ** //
   // API V1 //
 // All client-server sync methods
