@@ -23,6 +23,12 @@ router.get("/env-prod-consentmode", createRtiMiddleware("none", "v1", eventsType
 
     res.render("index-prod-consentmode", { rtiResString });
 });
+router.get("/env-prod-bridge-connector", createRtiMiddleware("none", "v1", eventsTypes.PAGE_LOAD, false, apiKey, tagHash, adserverEndpoint), function (req, res) {
+    const rtiRes = res.locals.rtiRes;
+    const rtiResString = JSON.stringify(rtiRes, null, 2);
+
+    res.render("index-prod-bridge-connector", { rtiResString });
+});
 
 // ** Defend Routes ** //
   // API V1 //

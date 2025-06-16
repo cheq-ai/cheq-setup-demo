@@ -23,6 +23,12 @@ router.get("/env-staging-consentmode", createRtiMiddleware("none", "v1", eventsT
 
     res.render("index-staging-consentmode", { rtiResString });
 });
+router.get("/env-staging-bridge-connector", createRtiMiddleware("none", "v1", eventsTypes.PAGE_LOAD, false, apiKey, tagHash, adserverEndpoint), function (req, res) {
+    const rtiRes = res.locals.rtiRes;
+    const rtiResString = JSON.stringify(rtiRes, null, 2);
+
+    res.render("index-staging-bridge-connector", { rtiResString });
+});
 
 // ** Defend Routes ** //
   // API V1 //
