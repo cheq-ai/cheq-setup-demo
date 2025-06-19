@@ -28,6 +28,8 @@ async function handleSubscribeV4(event, sessionSyncMode, apiVersion) {
     clientUserId: sessionStorage.getItem("v4cuid"),
   };
 
+  console.log(headers)
+
   fetch(`/subscribe-${sessionSyncMode}-${apiVersion}`, {
     method: "GET",
     headers: headers,
