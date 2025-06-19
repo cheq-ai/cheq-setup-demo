@@ -74,12 +74,8 @@ router.get("/subscribe-requestid-v3", createRtiMiddleware("requestId","v3",event
 });
 
 // API V4 //
-// All client-server sync methods
+// All client-server sync methods (none)
 router.get("/subscribe-none-v4", createRtiMiddleware("none","v4",eventsTypes.SUBSCRIBE, true, apiKey, tagHash, adserverEndpoint), function (req, res) {
-    res.json(res.locals.rtiRes);
-});
-// banRti 
-router.get("/subscribe-banrti-v4", createRtiMiddleware("banRti","v4",eventsTypes.SUBSCRIBE, true, apiKey, tagHash, adserverEndpoint), function (req, res) {
     res.json(res.locals.rtiRes);
 });
 // rtiCookie
