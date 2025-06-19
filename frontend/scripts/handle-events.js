@@ -20,23 +20,17 @@ async function handleSubscribe(event, sessionSyncMode, apiVersion) {
 }
 
 async function handleSubscribeV4(event, sessionSyncMode, apiVersion) {
-  console.log({
-    "User-Agent": navigator.userAgent,
-    duidCookie: getCookieValue("_cq_duid"),
-    pvidCookie: getCookieValue("_cq_pvid"),
+  const headers = {
+    "user-agent": navigator.userAgent,
+    duidCookie: getCookieValue("_cq_duid") | "mock-duid-cookie",
+    pvidCookie: getCookieValue("_cq_pvid") | "mock-pvid-cookie",
     pageViewId: sessionStorage.getItem("req"),
-    duid: sessionStorage.getItem("v4cuid"),
-  });
+    clientUserId: sessionStorage.getItem("v4cuid"),
+  };
 
   fetch(`/subscribe-${sessionSyncMode}-${apiVersion}`, {
     method: "GET",
-    headers: {
-      "User-Agent": navigator.userAgent,
-      duidCookie: getCookieValue("_cq_duid"),
-      pvidCookie: getCookieValue("_cq_pvid"),
-      pageViewId: sessionStorage.getItem("req"),
-      duid: sessionStorage.getItem("v4cuid"),
-    },
+    headers: headers,
   })
     .then((response) => response.json())
     .then((data) => {
