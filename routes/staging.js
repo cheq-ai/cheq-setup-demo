@@ -73,7 +73,6 @@ router.get("/subscribe-requestid-v3-staging", createRtiMiddleware("requestId","v
 // API V4 //
 // All client-server sync methods (none)
 router.get("/subscribe-none-v4-staging", createRtiMiddleware("none","v4",eventsTypes.SUBSCRIBE, true, apiKey, tagHash, adserverEndpoint), function (req, res) {
-    console.log('ENV: staging')
     res.json(res.locals.rtiRes);
 });
 // rtiCookie
