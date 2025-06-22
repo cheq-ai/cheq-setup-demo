@@ -22,13 +22,13 @@ async function handleSubscribe(event, sessionSyncMode, apiVersion) {
 async function handleSubscribeV4(event, sessionSyncMode, apiVersion) {
   const headers = {
     "user-agent": navigator.userAgent,
-    duidCookie: getCookieValue("_cq_duid") | "mock-duid-cookie",
-    pvidCookie: getCookieValue("_cq_pvid") | "mock-pvid-cookie",
+    duidCookie: getCookieValue("_cq_duid"),
+    pvidCookie: getCookieValue("_cq_pvid"),
     pageViewId: sessionStorage.getItem("req"),
     clientUserId: sessionStorage.getItem("v4cuid"),
   };
 
-  console.log(headers)
+  console.log(headers);
 
   fetch(`/subscribe-${sessionSyncMode}-${apiVersion}`, {
     method: "GET",
@@ -85,8 +85,9 @@ async function handleSubmit(event, sessionSyncMode, apiVersion) {
   }
 }
 
-const getCookieValue = (name) =>
-  document.cookie
+const getCookieValue = (cookieName) => {
+  return document.cookie
     .split("; ")
-    .find((cookie) => cookie.startsWith(`${name}=`))
+    .find((cookie) => cookie.startsWith(`${cookieName}=`))
     ?.split("=")[1];
+};
