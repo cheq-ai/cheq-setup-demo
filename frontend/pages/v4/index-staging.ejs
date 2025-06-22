@@ -32,11 +32,6 @@
 
     <hr />
 
-    <div id="cheq-rti-response-homepage">
-      <h4>HOMEPAGE RTI Response:</h4>
-      <pre><span id="homepage-response-el"><%- rtiResString %></span></pre>
-    </div>
-
     <div class="tabs">
       <button class="tab-button" onclick="openTab(event, 'tab-defend')">
         Defend (RTI)
@@ -73,16 +68,16 @@
 
       <div>
         <h3>API Version: 4</h3>
-        <button onclick="handleSubscribe(event, 'none', 'v4')">
+        <button onclick="handleSubscribe(event, 'none', 'v4', 'staging')">
           <a>Subscribe - none (all methods)</a>
         </button>
-        <button onclick="handleSubscribe(event, 'banrti', 'v4')">
+        <button onclick="handleSubscribe(event, 'banrti', 'v4', 'staging')">
           <a>Subscribe - Ban RTI</a>
         </button>
-        <button onclick="handleSubscribe(event, 'rticookie', 'v4')">
+        <button onclick="handleSubscribe(event, 'rticookie', 'v4', 'staging')">
           <a>Subscribe - RTI Cookie</a>
         </button>
-        <button onclick="handleSubscribe(event, 'requestid', 'v4')">
+        <button onclick="handleSubscribe(event, 'requestid', 'v4', 'staging')">
           <a>Subscribe - Request ID</a>
         </button>
       </div>

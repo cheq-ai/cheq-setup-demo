@@ -1,5 +1,5 @@
-async function handleSubscribe(event, sessionSyncMode, apiVersion) {
-  fetch(`/subscribe-${sessionSyncMode}-${apiVersion}`, {
+async function handleSubscribe(event, sessionSyncMode, apiVersion, env) {
+  fetch(`/subscribe-${sessionSyncMode}-${apiVersion}-${env}`, {
     method: "GET",
     headers: {
       "User-Agent": navigator.userAgent,
@@ -19,7 +19,7 @@ async function handleSubscribe(event, sessionSyncMode, apiVersion) {
     });
 }
 
-async function handleSubscribeV4(event, sessionSyncMode, apiVersion) {
+async function handleSubscribeV4(event, sessionSyncMode, apiVersion, env) {
   const headers = {
     "user-agent": navigator.userAgent,
     duidCookie: getCookieValue("_cq_duid"),
@@ -28,9 +28,7 @@ async function handleSubscribeV4(event, sessionSyncMode, apiVersion) {
     clientUserId: sessionStorage.getItem("v4cuid"),
   };
 
-  console.log(headers);
-
-  fetch(`/subscribe-${sessionSyncMode}-${apiVersion}`, {
+  fetch(`/subscribe-${sessionSyncMode}-${apiVersion}-${env}`, {
     method: "GET",
     headers: headers,
   })

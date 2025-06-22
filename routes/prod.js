@@ -37,55 +37,52 @@ router.get("/env-prod-v4", function (req, res) {
 // ** Defend Routes ** //
   // API V1 //
 // All client-server sync methods
-router.get("/subscribe-none-v1", createRtiMiddleware("none","v1",eventsTypes.SUBSCRIBE, true, apiKey, tagHash, adserverEndpoint), function (req, res) {
+router.get("/subscribe-none-v1-prod", createRtiMiddleware("none","v1",eventsTypes.SUBSCRIBE, true, apiKey, tagHash, adserverEndpoint), function (req, res) {
     res.json(res.locals.rtiRes);
 });
 // banRti 
-router.get("/subscribe-banrti-v1", createRtiMiddleware("banRti","v1",eventsTypes.SUBSCRIBE, true, apiKey, tagHash, adserverEndpoint), function (req, res) {
+router.get("/subscribe-banrti-v1-prod", createRtiMiddleware("banRti","v1",eventsTypes.SUBSCRIBE, true, apiKey, tagHash, adserverEndpoint), function (req, res) {
     res.json(res.locals.rtiRes);
 });
 // rtiCookie
-router.get("/subscribe-rticookie-v1", createRtiMiddleware("rtiCookie","v1",eventsTypes.SUBSCRIBE, true, apiKey, tagHash, adserverEndpoint), function (req, res) {
+router.get("/subscribe-rticookie-v1-prod", createRtiMiddleware("rtiCookie","v1",eventsTypes.SUBSCRIBE, true, apiKey, tagHash, adserverEndpoint), function (req, res) {
 res.json(res.locals.rtiRes);
 });
 // requestId
-router.get("/subscribe-requestid-v1", createRtiMiddleware("requestId","v1",eventsTypes.SUBSCRIBE, true, apiKey, tagHash, adserverEndpoint), function (req, res) {
+router.get("/subscribe-requestid-v1-prod", createRtiMiddleware("requestId","v1",eventsTypes.SUBSCRIBE, true, apiKey, tagHash, adserverEndpoint), function (req, res) {
 res.json(res.locals.rtiRes);
 });
 
 // API V3 //
 // All client-server sync methods
-router.get("/subscribe-none-v3", createRtiMiddleware("none","v3",eventsTypes.SUBSCRIBE, true, apiKey, tagHash, adserverEndpoint), function (req, res) {
+router.get("/subscribe-none-v3-prod", createRtiMiddleware("none","v3",eventsTypes.SUBSCRIBE, true, apiKey, tagHash, adserverEndpoint), function (req, res) {
     res.json(res.locals.rtiRes);
 });
 // banRti 
-router.get("/subscribe-banrti-v3", createRtiMiddleware("banRti","v3",eventsTypes.SUBSCRIBE, true, apiKey, tagHash, adserverEndpoint), function (req, res) {
+router.get("/subscribe-banrti-v3-prod", createRtiMiddleware("banRti","v3",eventsTypes.SUBSCRIBE, true, apiKey, tagHash, adserverEndpoint), function (req, res) {
     res.json(res.locals.rtiRes);
 });
 // rtiCookie
-router.get("/subscribe-rticookie-v3", createRtiMiddleware("rtiCookie","v3",eventsTypes.SUBSCRIBE, true, apiKey, tagHash, adserverEndpoint), function (req, res) {
+router.get("/subscribe-rticookie-v3-prod", createRtiMiddleware("rtiCookie","v3",eventsTypes.SUBSCRIBE, true, apiKey, tagHash, adserverEndpoint), function (req, res) {
     res.json(res.locals.rtiRes);
 });
 // requestId
-router.get("/subscribe-requestid-v3", createRtiMiddleware("requestId","v3",eventsTypes.SUBSCRIBE, true, apiKey, tagHash, adserverEndpoint), function (req, res) {
+router.get("/subscribe-requestid-v3-prod", createRtiMiddleware("requestId","v3",eventsTypes.SUBSCRIBE, true, apiKey, tagHash, adserverEndpoint), function (req, res) {
     res.json(res.locals.rtiRes);
 });
 
 // API V4 //
-// All client-server sync methods
-router.get("/subscribe-none-v4", createRtiMiddleware("none","v4",eventsTypes.SUBSCRIBE, true, apiKey, tagHash, adserverEndpoint), function (req, res) {
-    res.json(res.locals.rtiRes);
-});
-// banRti 
-router.get("/subscribe-banrti-v4", createRtiMiddleware("banRti","v4",eventsTypes.SUBSCRIBE, true, apiKey, tagHash, adserverEndpoint), function (req, res) {
+// All client-server sync methods (none)
+router.get("/subscribe-none-v4-prod", createRtiMiddleware("none","v4",eventsTypes.SUBSCRIBE, true, apiKey, tagHash, adserverEndpoint), function (req, res) {
+    console.log('ENV: prod')
     res.json(res.locals.rtiRes);
 });
 // rtiCookie
-router.get("/subscribe-rticookie-v4", createRtiMiddleware("rtiCookie","v4",eventsTypes.SUBSCRIBE, true, apiKey, tagHash, adserverEndpoint), function (req, res) {
+router.get("/subscribe-rticookie-v4-prod", createRtiMiddleware("rtiCookie","v4",eventsTypes.SUBSCRIBE, true, apiKey, tagHash, adserverEndpoint), function (req, res) {
     res.json(res.locals.rtiRes);
 });
 // requestId
-router.get("/subscribe-requestid-v4", createRtiMiddleware("requestId","v4",eventsTypes.SUBSCRIBE, true, apiKey, tagHash, adserverEndpoint), function (req, res) {
+router.get("/subscribe-requestid-v4-prod", createRtiMiddleware("requestId","v4",eventsTypes.SUBSCRIBE, true, apiKey, tagHash, adserverEndpoint), function (req, res) {
     res.json(res.locals.rtiRes);
 });
 
