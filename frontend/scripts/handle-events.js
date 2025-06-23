@@ -89,7 +89,6 @@ async function handleSubmitV4(event, sessionSyncMode, apiVersion, env) {
   const formData = new FormData(event.target);
   const formObject = Object.fromEntries(formData.entries());
 
-
   try {
     const response = await fetch(
       `/formsubmit-${sessionSyncMode}-${apiVersion}-${env}`,
