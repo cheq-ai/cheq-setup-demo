@@ -41,7 +41,7 @@ async function handleSubscribeV4(event, sessionSyncMode, apiVersion, env) {
     });
 }
 
-async function handleSubmit(event, sessionSyncMode, apiVersion) {
+async function handleSubmit(event, sessionSyncMode, apiVersion, env) {
   event.preventDefault();
 
   const formData = new FormData(event.target);
@@ -61,6 +61,47 @@ async function handleSubmit(event, sessionSyncMode, apiVersion) {
             document.cookie
               ?.split("; ")
               .find((part) => part.startsWith("_cheq_rti=")) || undefined,
+        },
+      }
+    );
+
+    if (response.ok) {
+      const data = await response.json();
+
+      document.getElementById("event-response-el").textContent = JSON.stringify(
+        data,
+        null,
+        2
+      );
+    } else {
+      console.error("Error submitting form:", response.statusText);
+      document.getElementById("response").textContent =
+        JSON.stringify(response);
+    }
+  } catch (error) {
+    document.getElementById("response").textContent = JSON.stringify(error);
+  }
+}
+
+async function handleSubmitV4(event, sessionSyncMode, apiVersion, env) {
+  event.preventDefault();
+
+  const formData = new FormData(event.target);
+  const formObject = Object.fromEntries(formData.entries());
+
+
+  try {
+    const response = await fetch(
+      `/formsubmit-${sessionSyncMode}-${apiVersion}-${env}`,
+      {
+        method: "POST",
+        body: JSON.stringify(formObject),
+        headers: {
+          "user-agent": navigator.userAgent,
+          duidCookie: getCookieValue("_cq_duid"),
+          pvidCookie: getCookieValue("_cq_pvid"),
+          pageViewId: sessionStorage.getItem("req"),
+          clientUserId: sessionStorage.getItem("v4cuid"),
         },
       }
     );
