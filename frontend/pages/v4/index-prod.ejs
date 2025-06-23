@@ -79,10 +79,101 @@
         </button>
       </div>
 
+      <code>
+        <pre><span id="event-response-el"></span></pre>
+      </code>
+
       <div id="cheq-rti-response-subscribe" style="display: none">
         <h4>SUBSCRIBE RTI Response:</h4>
         <pre><span id="rti-response-container"></span></pre>
       </div>
     </div>
+    <!-- Form Guard -->
+    <div id="tab-formguard" class="tab-content" style="display: none">
+      <h3>API Version: 4</h3>
+      <div class="forms-container">
+        <div class="contact-us-form-container">
+          <h3>Contact Us - cookie + requestid</h3>
+          <form
+            id="contact-us-form-none"
+            class="subscribe-form"
+            onsubmit="handleSubmitV4(event, 'none', 'v4', 'dev')"
+          >
+            <div class="form-group">
+              <label for="name">Name:</label>
+              <input type="text" id="name" name="name" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Email:</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number:</label>
+              <input type="tel" id="phone" name="phone" required />
+            </div>
+            <div class="form-group">
+              <label for="country">Country:</label>
+              <input type="text" id="country" name="country" required />
+            </div>
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+
+        <div class="contact-us-form-container">
+          <h3>Contact Us - Cookie</h3>
+          <form
+            id="contact-us-form-cookie"
+            class="subscribe-form"
+            onsubmit="handleSubmitV4(event, 'rticookie', 'v4', 'dev')"
+          >
+            <div class="form-group">
+              <label for="name">Name:</label>
+              <input type="text" id="name" name="name" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Email:</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number:</label>
+              <input type="tel" id="phone" name="phone" required />
+            </div>
+            <div class="form-group">
+              <label for="country">Country:</label>
+              <input type="text" id="country" name="country" required />
+            </div>
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+
+        <div class="contact-us-form-container">
+          <h3>Contact Us - Request ID</h3>
+          <form
+            id="contact-us-form-requestid"
+            class="subscribe-form"
+            onsubmit="handleSubmitV4(event, 'requestid', 'v4', 'dev')"
+          >
+            <div class="form-group">
+              <label for="name">Name:</label>
+              <input type="text" id="name" name="name" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Email:</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number:</label>
+              <input type="tel" id="phone" name="phone" required />
+            </div>
+            <div class="form-group">
+              <label for="country">Country:</label>
+              <input type="text" id="country" name="country" required />
+            </div>
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- Close tab-formguard -->
   </body>
 </html>

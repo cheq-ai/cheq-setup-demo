@@ -85,7 +85,7 @@ router.get("/subscribe-requestid-v4-staging", createRtiMiddleware("requestId","v
 });
 
 // ** Form-Guard Routes ** //
-// v1 Regular Flow
+// v1 
 router.post('/formsubmit-none-v1', createSlpMiddleware("fast","none","v1",eventsTypes.SUBSCRIBE, apiKey, tagHash, adserverEndpoint), (req, res) => {
     const slpRes = res.locals.slpRes
 
@@ -109,7 +109,7 @@ router.post('/formsubmit-requestid-v1', createSlpMiddleware("fast","requestId","
     res.json(slpRes);
 });
 
-// v1 Regular Flow
+// v3 
 router.post('/formsubmit-none-v3', createSlpMiddleware("fast","none","v3",eventsTypes.SUBSCRIBE, apiKey, tagHash, adserverEndpoint), (req, res) => {
     const slpRes = res.locals.slpRes
 
@@ -126,6 +126,23 @@ router.post('/formsubmit-rticookie-v3', createSlpMiddleware("fast","rtiCookie","
     res.json(slpRes);
 });
 router.post('/formsubmit-requestid-v3', createSlpMiddleware("fast","requestId","v3",eventsTypes.SUBSCRIBE, apiKey, tagHash, adserverEndpoint), (req, res) => {
+    const slpRes = res.locals.slpRes
+
+    res.json(slpRes);
+});
+
+// v4 udv
+router.post('/formsubmit-none-v4-staging', createSlpMiddleware("fast","none","v4",eventsTypes.SUBSCRIBE, apiKey, tagHash, adserverEndpoint), (req, res) => {
+    const slpRes = res.locals.slpRes
+
+    res.json(slpRes);
+});
+router.post('/formsubmit-rticookie-v4-staging', createSlpMiddleware("fast","rtiCookie","v4",eventsTypes.SUBSCRIBE, apiKey, tagHash, adserverEndpoint), (req, res) => {
+    const slpRes = res.locals.slpRes
+
+    res.json(slpRes);
+});
+router.post('/formsubmit-requestid-v4-staging', createSlpMiddleware("fast","requestId","v4",eventsTypes.SUBSCRIBE, apiKey, tagHash, adserverEndpoint), (req, res) => {
     const slpRes = res.locals.slpRes
 
     res.json(slpRes);
