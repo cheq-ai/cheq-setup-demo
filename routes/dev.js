@@ -10,6 +10,9 @@ const apiKey = process.env.API_KEY_DEV;
 const tagHash = process.env.TAG_HASH_DEV;
 const adserverEndpoint = "https://obs.dev.cheqzone.com"
 
+router.use(express.json());
+router.use(express.urlencoded({ extended: true }));
+
 // Routes
 router.get("/env-dev", createRtiMiddleware("none", "v1", eventsTypes.PAGE_LOAD, false, apiKey, tagHash, adserverEndpoint), function (req, res) {
     const rtiRes = res.locals.rtiRes;
@@ -76,7 +79,6 @@ router.get("/subscribe-requestid-v3-dev", createRtiMiddleware("requestId","v3",e
 // API V4 //
 // All client-server sync methods (none)
 router.get("/subscribe-none-v4-dev", createRtiMiddleware("none","v4",eventsTypes.SUBSCRIBE, true, apiKey, tagHash, adserverEndpoint), function (req, res) {
-    console.log('ENV: dev')
     res.json(res.locals.rtiRes);
 });
 // rtiCookie

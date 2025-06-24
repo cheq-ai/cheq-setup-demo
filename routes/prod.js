@@ -74,7 +74,6 @@ router.get("/subscribe-requestid-v3-prod", createRtiMiddleware("requestId","v3",
 // API V4 //
 // All client-server sync methods (none)
 router.get("/subscribe-none-v4-prod", createRtiMiddleware("none","v4",eventsTypes.SUBSCRIBE, true, apiKey, tagHash, adserverEndpoint), function (req, res) {
-    console.log('ENV: prod')
     res.json(res.locals.rtiRes);
 });
 // rtiCookie

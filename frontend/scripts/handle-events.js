@@ -94,8 +94,9 @@ async function handleSubmitV4(event, sessionSyncMode, apiVersion, env) {
       `/formsubmit-${sessionSyncMode}-${apiVersion}-${env}`,
       {
         method: "POST",
-        body: JSON.stringify(formObject),
+        body: JSON.stringify(formObject), // Convert to JSON string
         headers: {
+          "Content-Type": "application/json",
           "user-agent": navigator.userAgent,
           duidCookie: getCookieValue("_cq_duid"),
           pvidCookie: getCookieValue("_cq_pvid"),
@@ -115,11 +116,12 @@ async function handleSubmitV4(event, sessionSyncMode, apiVersion, env) {
       );
     } else {
       console.error("Error submitting form:", response.statusText);
-      document.getElementById("response").textContent =
+      document.getElementById("rti-response-container").textContent =
         JSON.stringify(response);
     }
   } catch (error) {
-    document.getElementById("response").textContent = JSON.stringify(error);
+    document.getElementById("rti-response-container").textContent =
+      JSON.stringify(error);
   }
 }
 
