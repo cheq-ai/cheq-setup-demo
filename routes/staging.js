@@ -27,8 +27,13 @@ router.get("/env-staging-bridge-connector", createRtiMiddleware("none", "v1", ev
     const rtiRes = res.locals.rtiRes;
     const rtiResString = JSON.stringify(rtiRes, null, 2);
 
-    res.render("index-staging-bridge-connector", { rtiResString });
+    res.render("staging/index-bridge-connector", { rtiResString });
 });
+
+router.get("/env-staging-power-connector", createRtiMiddleware("none", "v1", eventsTypes.PAGE_LOAD, false, apiKey, tagHash, adserverEndpoint), function (req, res) {
+    res.render("staging/index-power-connector");
+});
+
 router.get("/env-staging-v4", function (req, res) {
     res.render("v4/index-staging");
 });
