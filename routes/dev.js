@@ -32,7 +32,11 @@ router.get("/env-dev-bridge-connector", createRtiMiddleware("none", "v1", events
     const rtiRes = res.locals.rtiRes;
     const rtiResString = JSON.stringify(rtiRes, null, 2);
 
-    res.render("index-dev-bridge-connector", { rtiResString });
+    res.render("dev/index-bridge-connector", { rtiResString });
+});
+
+router.get("/env-dev-power-connector", createRtiMiddleware("none", "v1", eventsTypes.PAGE_LOAD, false, apiKey, tagHash, adserverEndpoint), function (req, res) {
+    res.render("dev/index-power-connector");
 });
 
 router.get("/env-dev-v4", function (req, res) {
