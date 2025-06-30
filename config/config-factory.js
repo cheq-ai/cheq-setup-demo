@@ -22,6 +22,8 @@ function createRtiMiddleware(sessionSyncMode, apiVersion, eventType, blockingAct
     sessionSyncMode, // banRti OR rtiCookie OR requestId OR none
   };
 
+  console.log(rtiOptions)
+
   return rti(rtiOptions)(eventType);
 }
 

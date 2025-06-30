@@ -14,28 +14,28 @@ router.use(express.json());
 router.use(express.urlencoded({ extended: true }));
 
 // Routes
-router.get("/env-dev", createRtiMiddleware("none", "v1", eventsTypes.PAGE_LOAD, false, apiKey, tagHash, adserverEndpoint), function (req, res) {
+router.get("/env-dev", createRtiMiddleware("none", "v1", eventsTypes.PAGE_LOAD, true, apiKey, tagHash, adserverEndpoint), function (req, res) {
     const rtiRes = res.locals.rtiRes;
     const rtiResString = JSON.stringify(rtiRes, null, 2);
 
     res.render("index-dev", { rtiResString });
 });
 
-router.get("/env-dev-consentmode", createRtiMiddleware("none", "v1", eventsTypes.PAGE_LOAD, false, apiKey, tagHash, adserverEndpoint), function (req, res) {
+router.get("/env-dev-consentmode", createRtiMiddleware("none", "v1", eventsTypes.PAGE_LOAD, true, apiKey, tagHash, adserverEndpoint), function (req, res) {
     const rtiRes = res.locals.rtiRes;
     const rtiResString = JSON.stringify(rtiRes, null, 2);
 
     res.render("index-dev-consentmode", { rtiResString });
 });
 
-router.get("/env-dev-bridge-connector", createRtiMiddleware("none", "v1", eventsTypes.PAGE_LOAD, false, apiKey, tagHash, adserverEndpoint), function (req, res) {
+router.get("/env-dev-bridge-connector", createRtiMiddleware("none", "v1", eventsTypes.PAGE_LOAD, true, apiKey, tagHash, adserverEndpoint), function (req, res) {
     const rtiRes = res.locals.rtiRes;
     const rtiResString = JSON.stringify(rtiRes, null, 2);
 
     res.render("dev/index-bridge-connector", { rtiResString });
 });
 
-router.get("/env-dev-power-connector", createRtiMiddleware("none", "v1", eventsTypes.PAGE_LOAD, false, apiKey, tagHash, adserverEndpoint), function (req, res) {
+router.get("/env-dev-power-connector", createRtiMiddleware("none", "v1", eventsTypes.PAGE_LOAD, true, apiKey, tagHash, adserverEndpoint), function (req, res) {
     res.render("dev/index-power-connector");
 });
 

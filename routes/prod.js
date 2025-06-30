@@ -11,26 +11,26 @@ const tagHash = process.env.TAG_HASH_PROD;
 const adserverEndpoint = "https://obs.cheqzone.com"
 
 // Routes
-router.get("/env-prod", createRtiMiddleware("none", "v1", eventsTypes.PAGE_LOAD, false, apiKey, tagHash, adserverEndpoint), function (req, res) {
+router.get("/env-prod", createRtiMiddleware("none", "v1", eventsTypes.PAGE_LOAD, true, apiKey, tagHash, adserverEndpoint), function (req, res) {
     const rtiRes = res.locals.rtiRes;
     const rtiResString = JSON.stringify(rtiRes, null, 2);
 
     res.render("index-prod", { rtiResString });
 });
-router.get("/env-prod-consentmode", createRtiMiddleware("none", "v1", eventsTypes.PAGE_LOAD, false, apiKey, tagHash, adserverEndpoint), function (req, res) {
+router.get("/env-prod-consentmode", createRtiMiddleware("none", "v1", eventsTypes.PAGE_LOAD, true, apiKey, tagHash, adserverEndpoint), function (req, res) {
     const rtiRes = res.locals.rtiRes;
     const rtiResString = JSON.stringify(rtiRes, null, 2);
 
     res.render("index-prod-consentmode", { rtiResString });
 });
-router.get("/env-prod-bridge-connector", createRtiMiddleware("none", "v1", eventsTypes.PAGE_LOAD, false, apiKey, tagHash, adserverEndpoint), function (req, res) {
+router.get("/env-prod-bridge-connector", createRtiMiddleware("none", "v1", eventsTypes.PAGE_LOAD, true, apiKey, tagHash, adserverEndpoint), function (req, res) {
     const rtiRes = res.locals.rtiRes;
     const rtiResString = JSON.stringify(rtiRes, null, 2);
 
     res.render("prod/index-bridge-connector", { rtiResString });
 });
 
-router.get("/env-prod-power-connector", createRtiMiddleware("none", "v1", eventsTypes.PAGE_LOAD, false, apiKey, tagHash, adserverEndpoint), function (req, res) {
+router.get("/env-prod-power-connector", createRtiMiddleware("none", "v1", eventsTypes.PAGE_LOAD, true, apiKey, tagHash, adserverEndpoint), function (req, res) {
     res.render("prod/index-power-connector");
 });
 
