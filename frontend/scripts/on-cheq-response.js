@@ -1,4 +1,4 @@
-function onCheqResponse(param1, req, v4cuid) {
+function onCheqResponse(param1, req, duid) {
   sessionStorage.setItem("req", req);
-  sessionStorage.setItem("v4cuid", v4cuid);
+  sessionStorage.setItem("duid", duid);
 }

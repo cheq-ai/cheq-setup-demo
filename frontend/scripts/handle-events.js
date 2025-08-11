@@ -25,7 +25,7 @@ async function handleSubscribeV4(event, sessionSyncMode, apiVersion, env) {
     duidCookie: getCookieValue("_cq_duid"),
     pvidCookie: getCookieValue("_cq_pvid"),
     pageViewId: sessionStorage.getItem("req"),
-    clientUserId: sessionStorage.getItem("v4cuid"),
+    duid: sessionStorage.getItem("duid"),
   };
 
   fetch(`/subscribe-${sessionSyncMode}-${apiVersion}-${env}`, {
@@ -101,7 +101,7 @@ async function handleSubmitV4(event, sessionSyncMode, apiVersion, env) {
           duidCookie: getCookieValue("_cq_duid"),
           pvidCookie: getCookieValue("_cq_pvid"),
           pageViewId: sessionStorage.getItem("req"),
-          clientUserId: sessionStorage.getItem("v4cuid"),
+          duid: sessionStorage.getItem("duid"),
         },
       }
     );
