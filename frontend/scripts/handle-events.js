@@ -20,17 +20,19 @@ async function handleSubscribe(event, sessionSyncMode, apiVersion, env) {
 }
 
 async function handleSubscribeV4(event, sessionSyncMode, apiVersion, env) {
-  const headers = {
-    "user-agent": navigator.userAgent,
+  const identifiers = {
     duidCookie: getCookieValue("_cq_duid"),
     pvidCookie: getCookieValue("_cq_pvid"),
     pageViewId: sessionStorage.getItem("req"),
     duid: sessionStorage.getItem("duid"),
   };
 
-  fetch(`/subscribe-${sessionSyncMode}-${apiVersion}-${env}`, {
-    method: "GET",
-    headers: headers,
+  console.log(identifiers)
+
+  await fetch(`/subscribe-${sessionSyncMode}-${apiVersion}-${env}`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(identifiers),
   })
     .then((response) => response.json())
     .then((data) => {

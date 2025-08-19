@@ -81,18 +81,53 @@ router.get("/subscribe-requestid-v3-dev", createRtiMiddleware("requestId","v3",e
 });
 
 // API V4 //
-// All client-server sync methods (none)
-router.get("/subscribe-none-v4-dev", createRtiMiddleware("none","v4",eventsTypes.SUBSCRIBE, true, apiKey, tagHash, adserverEndpoint), function (req, res) {
+
+// IP & User Agent
+router.post(
+  "/subscribe-ip_useragent-v4-dev",
+  createRtiMiddleware("ip_useragent", "v4", eventsTypes.SUBSCRIBE, true, apiKey, tagHash, adserverEndpoint),
+  function (req, res) {
     res.json(res.locals.rtiRes);
-});
-// rtiCookie
-router.get("/subscribe-rticookie-v4-dev", createRtiMiddleware("rtiCookie","v4",eventsTypes.SUBSCRIBE, true, apiKey, tagHash, adserverEndpoint), function (req, res) {
+  }
+);
+
+// Cookies only
+router.post(
+  "/subscribe-cookies-v4-dev",
+  createRtiMiddleware("cookies", "v4", eventsTypes.SUBSCRIBE, true, apiKey, tagHash, adserverEndpoint),
+  function (req, res) {
     res.json(res.locals.rtiRes);
-});
-// requestId
-router.get("/subscribe-requestid-v4-dev", createRtiMiddleware("requestId","v4",eventsTypes.SUBSCRIBE, true, apiKey, tagHash, adserverEndpoint), function (req, res) {
+  }
+);
+
+// Page View ID only
+router.post(
+  "/subscribe-pageviewid-v4-dev",
+  createRtiMiddleware("pageviewid", "v4", eventsTypes.SUBSCRIBE, true, apiKey, tagHash, adserverEndpoint),
+  function (req, res) {
     res.json(res.locals.rtiRes);
-});
+  }
+);
+
+// DUID only
+router.post(
+  "/subscribe-duid-v4-dev",
+  createRtiMiddleware("duid", "v4", eventsTypes.SUBSCRIBE, true, apiKey, tagHash, adserverEndpoint),
+  (req, res) => {
+    res.json(res.locals.rtiRes);
+  }
+);
+
+// All identifiers (Cookies + Page View ID + DUID + IP + User Agent)
+router.post(
+  "/subscribe-all_identifiers-v4-dev",
+  createRtiMiddleware("all_identifiers", "v4", eventsTypes.SUBSCRIBE, true, apiKey, tagHash, adserverEndpoint),
+  (req, res) => {
+    res.json(res.locals.rtiRes);
+  }
+);
+
+
 
 // ** Form-Guard Routes ** //
 // v1 Regular Flow

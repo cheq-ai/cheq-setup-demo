@@ -88,6 +88,10 @@ router.get("/subscribe-rticookie-v4-prod", createRtiMiddleware("rtiCookie","v4",
 router.get("/subscribe-requestid-v4-prod", createRtiMiddleware("requestId","v4",eventsTypes.SUBSCRIBE, true, apiKey, tagHash, adserverEndpoint), function (req, res) {
     res.json(res.locals.rtiRes);
 });
+// duid
+router.get("/subscribe-duid-v4-prod", createRtiMiddleware("duid","v4",eventsTypes.SUBSCRIBE, true, apiKey, tagHash, adserverEndpoint), function (req, res) {
+    res.json(res.locals.rtiRes);
+});
 
 // ** Form-Guard Routes ** //
 // v1
