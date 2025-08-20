@@ -177,20 +177,52 @@ router.post('/formsubmit-requestid-v3', createSlpMiddleware("fast","requestId","
 });
 
 // v4 udv
-router.post('/formsubmit-none-v4-dev', createSlpMiddleware("fast","none","v4",eventsTypes.SUBSCRIBE, apiKey, tagHash, adserverEndpoint), (req, res) => {
-    const slpRes = res.locals.slpRes
+// v4 udv (RTI-based)
 
-    res.json(slpRes);
-});
-router.post('/formsubmit-rticookie-v4-dev', createSlpMiddleware("fast","rtiCookie","v4",eventsTypes.SUBSCRIBE, apiKey, tagHash, adserverEndpoint), (req, res) => {
-    const slpRes = res.locals.slpRes
+// All identifiers (Cookies + Page View ID + DUID + IP + User Agent)
+router.post(
+  "/formsubmit-all_identifiers-v4-dev",
+  createRtiMiddleware("all_identifiers", "v4", eventsTypes.SUBSCRIBE, true, apiKey, tagHash, adserverEndpoint),
+  (req, res) => {
+    res.json(res.locals.rtiRes);
+  }
+);
 
-    res.json(slpRes);
-});
-router.post('/formsubmit-requestid-v4-dev', createSlpMiddleware("fast","requestId","v4",eventsTypes.SUBSCRIBE, apiKey, tagHash, adserverEndpoint), (req, res) => {
-    const slpRes = res.locals.slpRes
+// Cookies only
+router.post(
+  "/formsubmit-cookies-v4-dev",
+  createRtiMiddleware("cookies", "v4", eventsTypes.SUBSCRIBE, true, apiKey, tagHash, adserverEndpoint),
+  (req, res) => {
+    res.json(res.locals.rtiRes);
+  }
+);
 
-    res.json(slpRes);
-});
+// Page View ID only
+router.post(
+  "/formsubmit-pageviewid-v4-dev",
+  createRtiMiddleware("pageviewid", "v4", eventsTypes.SUBSCRIBE, true, apiKey, tagHash, adserverEndpoint),
+  (req, res) => {
+    res.json(res.locals.rtiRes);
+  }
+);
+
+// DUID only
+router.post(
+  "/formsubmit-duid-v4-dev",
+  createRtiMiddleware("duid", "v4", eventsTypes.SUBSCRIBE, true, apiKey, tagHash, adserverEndpoint),
+  (req, res) => {
+    res.json(res.locals.rtiRes);
+  }
+);
+
+// IP & User Agent
+router.post(
+  "/formsubmit-ip_useragent-v4-dev",
+  createRtiMiddleware("ip_useragent", "v4", eventsTypes.SUBSCRIBE, true, apiKey, tagHash, adserverEndpoint),
+  (req, res) => {
+    res.json(res.locals.rtiRes);
+  }
+);
+
 
 module.exports = router;

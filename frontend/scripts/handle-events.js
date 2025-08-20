@@ -27,8 +27,6 @@ async function handleSubscribeV4(event, sessionSyncMode, apiVersion, env) {
     duid: sessionStorage.getItem("duid"),
   };
 
-  console.log(identifiers)
-
   await fetch(`/subscribe-${sessionSyncMode}-${apiVersion}-${env}`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -90,20 +88,21 @@ async function handleSubmitV4(event, sessionSyncMode, apiVersion, env) {
 
   const formData = new FormData(event.target);
   const formObject = Object.fromEntries(formData.entries());
+  const identifiers = {
+    duidCookie: getCookieValue("_cq_duid"),
+    pvidCookie: getCookieValue("_cq_pvid"),
+    pageViewId: sessionStorage.getItem("req"),
+    duid: sessionStorage.getItem("duid"),
+  };
 
   try {
     const response = await fetch(
       `/formsubmit-${sessionSyncMode}-${apiVersion}-${env}`,
       {
         method: "POST",
-        body: JSON.stringify(formObject), // Convert to JSON string
+        body: JSON.stringify({ ...(formObject || {}), ...(identifiers || {}) }),
         headers: {
           "Content-Type": "application/json",
-          "user-agent": navigator.userAgent,
-          duidCookie: getCookieValue("_cq_duid"),
-          pvidCookie: getCookieValue("_cq_pvid"),
-          pageViewId: sessionStorage.getItem("req"),
-          duid: sessionStorage.getItem("duid"),
         },
       }
     );

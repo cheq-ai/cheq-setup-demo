@@ -21,7 +21,7 @@ function createRtiMiddleware(
       mode: blockingActive ? "blocking" : "monitoring",
       redirectUrl: `/redirect`,
       sessionSyncMode,
-      data: req.body, 
+      data: req.body,
       callback: (req, res, next) => {
         res.sendFile(path.join(__dirname, "../frontend/pages/captcha.html"));
       },
@@ -40,17 +40,18 @@ function createSlpMiddleware(
   tagHash,
   apiEndpoint
 ) {
-  const slpOptions = {
-    apiKey,
-    tagHash,
-    apiVersion,
-    apiEndpoint,
-    mode,
-    timeout: null,
-    sessionSyncMode,
+  return function (req, res, next) {
+    const slpOptions = {
+      apiKey,
+      tagHash,
+      apiVersion,
+      apiEndpoint,
+      mode,
+      timeout: null,
+      sessionSyncMode,
+    };
+    return slp(slpOptions)(eventType)(req, res, next);
   };
-
-  return slp(slpOptions)(eventType);
 }
 
 module.exports = { createRtiMiddleware, createSlpMiddleware };
