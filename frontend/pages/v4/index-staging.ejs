@@ -66,19 +66,39 @@
       <br />
       <br />
 
+      <!-- RTI -->
       <div>
         <h3>API Version: 4</h3>
-        <button onclick="handleSubscribeV4(event, 'none', 'v4', 'staging')">
-          <a>Subscribe - All (Cookies + Page View ID)</a>
+
+        <!-- IP & USER-AGENT -->
+        <button
+          onclick="handleSubscribeV4(event, 'ip_useragent', 'v4', 'staging')"
+        >
+          Subscribe - IP & User Agent
         </button>
-        <button onclick="handleSubscribeV4(event, 'rticookie', 'v4', 'staging')">
-          <a>Subscribe - Cookies</a>
+
+        <!-- COOKIES ONLY -->
+        <button onclick="handleSubscribeV4(event, 'cookies', 'v4', 'staging')">
+          Subscribe - Cookies Only
         </button>
-        <button onclick="handleSubscribeV4(event, 'requestid', 'v4', 'staging')">
-          <a>Subscribe - Page View ID</a>
+
+        <!-- PAGE VIEW ID ONLY -->
+        <button
+          onclick="handleSubscribeV4(event, 'pageviewid', 'v4', 'staging')"
+        >
+          Subscribe - Page View ID Only
         </button>
+
+        <!-- DUID ONLY -->
         <button onclick="handleSubscribeV4(event, 'duid', 'v4', 'staging')">
-          Subscribe - DUID 
+          Subscribe - DUID Only
+        </button>
+
+        <!-- Cookie and identifiers (Cookies + Page View ID + DUID + IP + User Agent) -->
+        <button
+          onclick="handleSubscribeV4(event, 'all_identifiers', 'v4', 'staging')"
+        >
+          Subscribe - All
         </button>
       </div>
     </div>

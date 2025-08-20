@@ -67,19 +67,41 @@
       <br />
 
       <div>
-        <h3>API Version: 4</h3>
-        <button onclick="handleSubscribe(event, 'none', 'v4', 'prod')">
-          <a>Subscribe - All (Cookies + Page View ID)</a>
-        </button>
-        <button onclick="handleSubscribe(event, 'rticookie', 'v4', 'prod')">
-          <a>Subscribe - Cookies</a>
-        </button>
-        <button onclick="handleSubscribe(event, 'requestid', 'v4', 'prod')">
-          <a>Subscribe - Page View ID</a>
-        </button>
-          <button onclick="handleSubscribe(event, 'duid', 'v4', 'prod')">
-          <a>Subscribe - DUID</a>
-        </button>
+        <!-- RTI -->
+        <div>
+          <h3>API Version: 4</h3>
+
+          <!-- IP & USER-AGENT -->
+          <button
+            onclick="handleSubscribeV4(event, 'ip_useragent', 'v4', 'prod')"
+          >
+            Subscribe - IP & User Agent
+          </button>
+
+          <!-- COOKIES ONLY -->
+          <button onclick="handleSubscribeV4(event, 'cookies', 'v4', 'prod')">
+            Subscribe - Cookies Only
+          </button>
+
+          <!-- PAGE VIEW ID ONLY -->
+          <button
+            onclick="handleSubscribeV4(event, 'pageviewid', 'v4', 'staprodging')"
+          >
+            Subscribe - Page View ID Only
+          </button>
+
+          <!-- DUID ONLY -->
+          <button onclick="handleSubscribeV4(event, 'duid', 'v4', 'prod')">
+            Subscribe - DUID Only
+          </button>
+
+          <!-- Cookie and identifiers (Cookies + Page View ID + DUID + IP + User Agent) -->
+          <button
+            onclick="handleSubscribeV4(event, 'all_identifiers', 'v4', 'prod')"
+          >
+            Subscribe - All
+          </button>
+        </div>
       </div>
 
       <code>
