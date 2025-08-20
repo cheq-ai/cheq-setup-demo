@@ -1,44 +1,55 @@
 const express = require("express");
 const app = express();
 const path = require("path");
-const { rti, eventsTypes } = require("@cheq.ai/cheq-middlewares");
-const { apiEndpoints } = require("@cheq.ai/cheq-middlewares/config");
 const PORT = process.env.PORT || 5000;
-const options = {
-  apiKey: "ca9635f4-81fc-4dc4-9f2f-d4a78680787f",
-  tagHash: "86236b7f11f14e894e0263ad7f7df9a0",
-  apiEndpoint: apiEndpoints.DEV,
-  mode: "blocking",
-  threatTypesCodes: {
-    blockRedirect: [2, 3, 6, 11, 16, 18, 29, 10], // threat_type 10 = Malicious Bots / threat_type 3 = Automation tool -> bot useragent string: Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html) -> block & redirect (redirectUrl)
-    captcha: [4, 5, 13, 15, 17, 7, 14], // threat_type 14 = VPN -> navigate to captcha.html (callback)
-  },
-  redirectUrl: "http://localhost:5000/redirect", // TODO: CHANGE LOCALHOST TO EXTERNAL HOST
-  callback: function (req, res, next) {
-    res.sendFile(path.join(__dirname, "/frontend/captcha.html"));
-  },
-};
+const { auth } = require("express-openid-connect"); // Auth0
+const { authConfig } = require("./config/auth0"); // Auth0
 
-// Setup
-const middleware = rti(options);
-app.use(express.static(path.join(__dirname, "./frontend")));
+// Import Routes
+const devRoutes = require("./routes/dev");
+const stagingRoutes = require("./routes/staging");
+const prodRoutes = require("./routes/prod");
+
+// Setup & Middleware
 app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "frontend"));
+app.set("views", path.join(__dirname, "frontend", "pages"));
+app.use(express.static(path.join(__dirname, "./frontend")));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(auth(authConfig));
+app.use((req, res, next) => {
+  if (!req.oidc.isAuthenticated()) {
+    return res.redirect("/login");
+  }
+  next();
+});
 
 // Routes
-app.get("/subscribe", middleware(eventsTypes.SUBSCRIBE), function (req, res) {
-  const rtiRes = res.locals.rtiRes;
-  const rtiResString = JSON.stringify(rtiRes, null, 2);
+app.get("/", function (req, res) {
+  res.render("index");
+});
+app.use("", devRoutes);
+app.use("", stagingRoutes);
+app.use("", prodRoutes);
+app.get("/hubspot-staging", function (req, res) {
+  res.render("index-hubspot-staging");
+});
+app.get("/marketo-staging", function (req, res) {
+  res.render("index-marketo-staging");
+});
 
-  res.render("subscribe", { rtiResString });
+app.get("/hubspot-prod", function (req, res) {
+  res.render("index-hubspot-prod");
+});
+app.get("/marketo-prod", function (req, res) {
+  res.render("index-marketo-prod");
 });
 
 app.get("/redirect", function (req, res) {
-  // const rtiRes = res.locals.rtiRes;
-  // const rtiResString = JSON.stringify(rtiRes, null, 2);
-  // console.log(rtiResString);
-
-  res.render("redirect");
+  res.json("BLOCKED AND REDIRECTED! 🤖👋🏼");
+});
+app.get("/robots.txt", (req, res) => {
+  res.sendFile(path.join(__dirname, "robots.txt"));
 });
 
 // Start Server

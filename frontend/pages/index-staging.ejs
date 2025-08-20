@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="https://assets.adobedtm.com/2273b6608699/2aa59a6f14de/launch-a17e1d267a9c.min.js" async></script>
+    <script
+      async
+      src="https://ob.staging.cheqzone.com/i/86236b7f11f14e894e0263ad7f7df9a0.js"
+      data-ch="cheq4ppc"
+      class="ct_clicktrue_50193"
+      data-jsonp="onCheqResponse"
+    ></script>
+    <script src="../scripts/ui-script.js"></script>
+    <script src="../scripts/on-cheq-response.js"></script>
+    <script src="../scripts/handle-events.js"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="pages/style.css" />
+    <title>My Website</title>
+  </head>
+  <body>
+    <div class="header">
+      <br />
+      <h1>Welcome to my demo website</h1>
+      <h3>This site illustrates Cheq's core capabilities</h3>
+      <h4>ENV: staging</h4>
+      <a href="/logout" id="btn-logout">Logout</a>
+      <a href="/" id="btn-envs">Envs</a>
+    </div>
+
+    <hr />
+
+    <div id="cheq-rti-response-homepage">
+      <h4>HOMEPAGE RTI Response:</h4>
+      <pre><span id="homepage-response-el"><%- rtiResString %></span></pre>
+    </div>
+
+    <div class="tabs">
+      <button class="tab-button" onclick="openTab(event, 'tab-defend')">
+        Defend (RTI)
+      </button>
+      <button class="tab-button" onclick="openTab(event, 'tab-formguard')">
+        Form Guard (SLP)
+      </button>
+    </div>
+    <br />
+    <br />
+    <br />
+    <div id="tab-defend" class="tab-content" style="display: none">
+      <h2>CHEQ Defend</h2>
+      <p>
+        Clicking the Subscribe button sends an RTI request with the event of
+        SUBSCRIBE
+      </p>
+      <p>
+        UNLESS - you are an invalid visit. In that case you will receive a
+        'redirect' html file as a network response 🤖👋🏼
+      </p>
+      <span>
+        <b>setting custom invalid bot user-agent:</b>
+        <span id="user-agent-string"
+          >Mozilla/5.0 (compatible; Googlebot/2.1;
+          +http://www.google.com/bot.html)</span
+        >
+      </span>
+      <span onclick="copyToClipboard()" style="cursor: pointer">📑</span>
+
+      <br />
+      <br />
+      <br />
+
+      <div>
+        <h3>API Version: 1</h3>
+        <button onclick="handleSubscribe(event, 'none', 'v1', 'staging')">
+          <a>Subscribe - none (all methods)</a>
+        </button>
+        <button onclick="handleSubscribe(event, 'banrti', 'v1', 'staging')">
+          <a>Subscribe - Ban RTI</a>
+        </button>
+        <button onclick="handleSubscribe(event, 'rticookie', 'v1', 'staging')">
+          <a>Subscribe - RTI Cookie</a>
+        </button>
+        <button onclick="handleSubscribe(event, 'requestid', 'v1', 'staging')">
+          <a>Subscribe - Request ID</a>
+        </button>
+      </div>
+
+      <br />
+      <br />
+      <br />
+
+      <div>
+        <h3>API Version: 3 (extended response)</h3>
+        <button onclick="handleSubscribe(event, 'none', 'v3', 'staging')">
+          <a>Subscribe - none (all methods)</a>
+        </button>
+        <button onclick="handleSubscribe(event, 'banrti', 'v3', 'staging')">
+          <a>Subscribe - Ban RTI</a>
+        </button>
+        <button onclick="handleSubscribe(event, 'rticookie', 'v3', 'staging')">
+          <a>Subscribe - RTI Cookie</a>
+        </button>
+        <button onclick="handleSubscribe(event, 'requestid', 'v3', 'staging')">
+          <a>Subscribe - Request ID</a>
+        </button>
+      </div>
+
+      <div id="cheq-rti-response-subscribe" style="display: none">
+        <h4>SUBSCRIBE RTI Response:</h4>
+        <pre><span id="rti-response-container"></span></pre>
+      </div>
+    </div>
+
+    <div id="tab-formguard" class="tab-content" style="display: none">
+      <h3>API Version: 1</h3>
+      <div class="forms-container">
+        <div class="contact-us-form-container">
+          <h3>Contact Us - ALL</h3>
+          <form
+            id="contact-us-form"
+            class="subscribe-form"
+            onsubmit="handleSubmit(event, 'none', 'v1')"
+          >
+            <div class="form-group">
+              <label for="name">Name:</label>
+              <input type="text" id="name" name="name" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Email:</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number:</label>
+              <input type="tel" id="phone" name="phone" required />
+            </div>
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+
+        <div class="contact-us-form-container">
+          <h3>Contact Us - Ban RTI</h3>
+          <form
+            id="contact-us-form"
+            class="subscribe-form"
+            onsubmit="handleSubmit(event, 'banrti', 'v1')"
+          >
+            <div class="form-group">
+              <label for="name">Name:</label>
+              <input type="text" id="name" name="name" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Email:</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number:</label>
+              <input type="tel" id="phone" name="phone" required />
+            </div>
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+
+        <div class="contact-us-form-container">
+          <h3>Contact Us - RTI Cookie</h3>
+          <form
+            id="contact-us-form"
+            class="subscribe-form"
+            onsubmit="handleSubmit(event, 'rticookie', 'v1')"
+          >
+            <div class="form-group">
+              <label for="name">Name:</label>
+              <input type="text" id="name" name="name" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Email:</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number:</label>
+              <input type="tel" id="phone" name="phone" required />
+            </div>
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+
+        <div class="contact-us-form-container">
+          <h3>Contact Us - Request ID</h3>
+          <form
+            id="contact-us-form"
+            class="subscribe-form"
+            onsubmit="handleSubmit(event, 'requestid', 'v1')"
+          >
+            <div class="form-group">
+              <label for="name">Name:</label>
+              <input type="text" id="name" name="name" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Email:</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number:</label>
+              <input type="tel" id="phone" name="phone" required />
+            </div>
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+      </div>
+
+      <h3>API Version: 3</h3>
+      <div class="forms-container">
+        <div class="contact-us-form-container">
+          <h3>Contact Us - ALL</h3>
+          <form
+            id="contact-us-form"
+            class="subscribe-form"
+            onsubmit="handleSubmit(event, 'none', 'v3')"
+          >
+            <div class="form-group">
+              <label for="name">Name:</label>
+              <input type="text" id="name" name="name" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Email:</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number:</label>
+              <input type="tel" id="phone" name="phone" required />
+            </div>
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+
+        <div class="contact-us-form-container">
+          <h3>Contact Us - Ban RTI</h3>
+          <form
+            id="contact-us-form"
+            class="subscribe-form"
+            onsubmit="handleSubmit(event, 'banrti', 'v3')"
+          >
+            <div class="form-group">
+              <label for="name">Name:</label>
+              <input type="text" id="name" name="name" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Email:</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number:</label>
+              <input type="tel" id="phone" name="phone" required />
+            </div>
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+
+        <div class="contact-us-form-container">
+          <h3>Contact Us - RTI Cookie</h3>
+          <form
+            id="contact-us-form"
+            class="subscribe-form"
+            onsubmit="handleSubmit(event, 'rticookie', 'v3')"
+          >
+            <div class="form-group">
+              <label for="name">Name:</label>
+              <input type="text" id="name" name="name" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Email:</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number:</label>
+              <input type="tel" id="phone" name="phone" required />
+            </div>
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+
+        <div class="contact-us-form-container">
+          <h3>Contact Us - Request ID</h3>
+          <form
+            id="contact-us-form"
+            class="subscribe-form"
+            onsubmit="handleSubmit(event, 'requestid', 'v3')"
+          >
+            <div class="form-group">
+              <label for="name">Name:</label>
+              <input type="text" id="name" name="name" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Email:</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number:</label>
+              <input type="tel" id="phone" name="phone" required />
+            </div>
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+      </div>
+      <code>
+        <pre><span id="event-response-el"></span></pre>
+      </code>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="pages/style.css" />
+    <title>CHEQ Core</title>
+  </head>
+  <body>
+    <div class="header">
+      <br />
+      <h1>Welcome to my demo website</h1>
+      <h3>This site illustrates Cheq's core capabilities</h3>
+      <a href="/logout" id="btn-logout">Logout</a>
+    </div>
+
+    <hr />
+
+    <div class="env-section">
+      <h3>Dev</h3>
+      <button class="env-button" onclick="openTab(event, 'tab-defend')">
+        <a href="/env-dev">dev</a>
+      </button>
+      <button class="env-button" onclick="openTab(event, 'tab-defend')">
+        <a href="/env-dev-consentmode">dev - consent mode</a>
+      </button>
+      <button class="env-button" onclick="openTab(event, 'tab-defend')">
+        <a href="/env-dev-bridge-connector">dev - bridge connector</a>
+      </button>
+      <button class="env-button" onclick="openTab(event, 'tab-defend')">
+        <a href="/env-dev-power-connector">dev - power connector</a>
+      </button>
+      <button class="env-button" onclick="openTab(event, 'tab-defend')">
+        <a href="/env-dev-v4">dev v4</a>
+      </button>
+    </div>
+    <hr />
+
+    <div class="env-section">
+      <h3>Staging</h3>
+      <button class="env-button" onclick="openTab(event, 'tab-formguard')">
+        <a href="/env-staging">staging </a>
+      </button>
+      <button class="env-button" onclick="openTab(event, 'tab-formguard')">
+        <a href="/env-staging-consentmode">staging-consent mode </a>
+      </button>
+      <button class="env-button" onclick="openTab(event, 'ab-formguard')">
+        <a href="/env-staging-bridge-connector">staging - bridge connector</a>
+      </button>
+      <button class="env-button" onclick="openTab(event, 'tab-defend')">
+        <a href="/env-staging-power-connector">staging - power connector</a>
+      </button>
+      <button class="env-button" onclick="openTab(event, 'tab-defend')">
+        <a href="/env-staging-v4">staging v4</a>
+      </button>
+    </div>
+    <hr />
+
+    <div class="env-section">
+      <h3>Prod</h3>
+      <button class="env-button">
+        <a href="/env-prod">prod  </a>
+      </button>
+      <button class="env-button">
+        <a href="/env-prod-consentmode">prod-consent mode  </a>
+      </button>
+      <button class="env-button">
+        <a href="/env-prod-bridge-connector">prod   - bridge connector</a>
+      </button>
+      <button class="env-button" onclick="openTab(event, 'tab-defend')">
+        <a href="/env-prod-power-connector">prod   - power connector</a>
+      </button>
+      <button class="env-button" onclick="openTab(event, 'tab-defend')">
+        <a href="/env-prod-v4">prod v4</a>
+      </button>
+    </div>
+
+    <hr />
+    <div class="env-section">
+      <h3>Forms</h3>
+
+      <button class="env-button">
+        <a href="/hubspot-prod">Hubspot - prod</a>
+      </button>
+      <button class="env-button">
+        <a href="/marketo-prod">Marketo - prod</a>
+      </button>
+      <br />
+      <button class="env-button">
+        <a href="/hubspot-staging">Hubspot - staging</a>
+      </button>
+      <button class="env-button">
+        <a href="/marketo-staging">Marketo - staging</a>
+      </button>
+    </div>
+  </body>
+</html>
