@@ -58,6 +58,7 @@ h3 {
 #cheq-rti-response-subscribe,
 #cheq-rti-request-subscribe {
   margin: 0 100px 100px 100px;
+  max-width: 80%;
 
   h4 {
     font-size: 1.1em;
