@@ -193,7 +193,10 @@ router.post(
   "/formsubmit-all_identifiers-v4-dev",
   createSlpMiddleware("comprehensive", "all_identifiers", "v4", eventsTypes.SUBSCRIBE, apiKey, tagHash, adserverEndpoint),
   (req, res) => {
-    res.json(res.locals.slpRes);
+    res.json({
+      slpReq: res.locals.slpReq,
+      slpRes: res.locals.slpRes
+    });
   }
 );
 
@@ -202,7 +205,10 @@ router.post(
   "/formsubmit-cookies-v4-dev",
   createSlpMiddleware("comprehensive", "cookies", "v4", eventsTypes.SUBSCRIBE, apiKey, tagHash, adserverEndpoint),
   (req, res) => {
-    res.json(res.locals.slpRes);
+    res.json({
+      slpReq: res.locals.slpReq,
+      slpRes: res.locals.slpRes
+    });
   }
 );
 
@@ -211,7 +217,10 @@ router.post(
   "/formsubmit-pageviewid-v4-dev",
   createSlpMiddleware("comprehensive", "pageviewid", "v4", eventsTypes.SUBSCRIBE, apiKey, tagHash, adserverEndpoint),
   (req, res) => {
-    res.json(res.locals.slpRes);
+    res.json({
+      slpReq: res.locals.slpReq,
+      slpRes: res.locals.slpRes
+    });
   }
 );
 
@@ -220,7 +229,10 @@ router.post(
   "/formsubmit-duid-v4-dev",
   createSlpMiddleware("comprehensive","duid", "v4", eventsTypes.SUBSCRIBE, apiKey, tagHash, adserverEndpoint),
   (req, res) => {
-    res.json(res.locals.slpRes);
+    res.json({
+      slpReq: res.locals.slpReq,
+      slpRes: res.locals.slpRes
+    });
   }
 );
 
@@ -229,8 +241,10 @@ router.post(
   "/formsubmit-ip_useragent-v4-dev",
   createSlpMiddleware("comprehensive", "ip_useragent", "v4", eventsTypes.SUBSCRIBE, apiKey, tagHash, adserverEndpoint),
   (req, res) => {
-    document.
-    res.json(res.locals.slpRes);
+    res.json({
+      slpReq: res.locals.slpReq,
+      slpRes: res.locals.slpRes
+    });
   }
 );
 

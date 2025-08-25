@@ -4,6 +4,7 @@ function openTab(event, tabId) {
     tabContent[i].style.display = "none";
   }
 
+
   const tabButtons = document.getElementsByClassName("tab-button");
   for (let i = 0; i < tabButtons.length; i++) {
     tabButtons[i].className = tabButtons[i].className.replace(" active", "");

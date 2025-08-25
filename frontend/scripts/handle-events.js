@@ -36,12 +36,13 @@ async function handleSubscribeV4(event, sessionSyncMode, apiVersion, env) {
       return response.json();
     })
     .then((data) => {
+      const rtiReqContainer = document.getElementById("rti-request-container");
+      const rtiResContainer = document.getElementById("rti-response-container");
+
       document.getElementById("cheq-rti-response-subscribe").style.display =
         "block";
       document.getElementById("cheq-rti-request-subscribe").style.display =
         "block";
-      const rtiReqContainer = document.getElementById("rti-request-container");
-      const rtiResContainer = document.getElementById("rti-response-container");
       rtiReqContainer.innerHTML = JSON.stringify(data.rtiReq, null, 2);
       rtiResContainer.innerHTML = JSON.stringify(data.rtiRes, null, 2);
     });
