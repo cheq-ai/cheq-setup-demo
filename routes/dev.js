@@ -13,12 +13,10 @@ const adserverEndpoint = "https://obs.dev.cheqzone.com"
 router.use(express.json());
 router.use(express.urlencoded({ extended: true }));
 
-// Routes
+// Pages Routes
 router.get("/env-dev", createRtiMiddleware("none", "v1", eventsTypes.PAGE_LOAD, false, apiKey, tagHash, adserverEndpoint), function (req, res) {
     const rtiRes = res.locals.rtiRes;
     const rtiResString = JSON.stringify(rtiRes, null, 2);
-
-    res.render("index-dev", { rtiResString });
 });
 
 router.get("/env-dev-consentmode", createRtiMiddleware("none", "v1", eventsTypes.PAGE_LOAD, false, apiKey, tagHash, adserverEndpoint), function (req, res) {
@@ -44,7 +42,7 @@ router.get("/env-dev-v4", function (req, res) {
 });
 
 // ** Defend Routes ** //
-  // API V1 //
+// RTI V1 //
 // All client-server sync methods
 router.get("/subscribe-none-v1-dev", createRtiMiddleware("none","v1",eventsTypes.SUBSCRIBE, true, apiKey, tagHash, adserverEndpoint), function (req, res) {
     res.json(res.locals.rtiRes);
@@ -62,7 +60,7 @@ router.get("/subscribe-requestid-v1-dev", createRtiMiddleware("requestId","v1",e
 res.json(res.locals.rtiRes);
 });
 
-// API V3 //
+// RTI V3 //
 // All client-server sync methods
 router.get("/subscribe-none-v3-dev", createRtiMiddleware("none","v3",eventsTypes.SUBSCRIBE, true, apiKey, tagHash, adserverEndpoint), function (req, res) {
     res.json(res.locals.rtiRes);
@@ -80,8 +78,7 @@ router.get("/subscribe-requestid-v3-dev", createRtiMiddleware("requestId","v3",e
     res.json(res.locals.rtiRes);
 });
 
-// API V4 //
-
+// RTI V4 //
 // IP & User Agent
 router.post(
   "/subscribe-ip_useragent-v4-dev",
@@ -114,6 +111,8 @@ router.post(
   "/subscribe-duid-v4-dev",
   createRtiMiddleware("duid", "v4", eventsTypes.SUBSCRIBE, true, apiKey, tagHash, adserverEndpoint),
   (req, res) => {
+    console.log(res.locals.res)
+
     res.json(res.locals.rtiRes);
   }
 );
@@ -123,11 +122,12 @@ router.post(
   "/subscribe-all_identifiers-v4-dev",
   createRtiMiddleware("all_identifiers", "v4", eventsTypes.SUBSCRIBE, true, apiKey, tagHash, adserverEndpoint),
   (req, res) => {
-    res.json(res.locals.rtiRes);
+    res.json({
+      rtiReq: res.locals.rtiReq,
+      rtiRes: res.locals.rtiRes
+    });
   }
 );
-
-
 
 // ** Form-Guard Routes ** //
 // v1 Regular Flow
@@ -183,7 +183,7 @@ router.post(
   "/formsubmit-all_identifiers-v4-dev",
   createSlpMiddleware("comprehensive", "all_identifiers", "v4", eventsTypes.SUBSCRIBE, apiKey, tagHash, adserverEndpoint),
   (req, res) => {
-    res.json(res.locals.rtiRes);
+    res.json(res.locals.slpRes);
   }
 );
 
@@ -192,7 +192,7 @@ router.post(
   "/formsubmit-cookies-v4-dev",
   createSlpMiddleware("comprehensive", "cookies", "v4", eventsTypes.SUBSCRIBE, apiKey, tagHash, adserverEndpoint),
   (req, res) => {
-    res.json(res.locals.rtiRes);
+    res.json(res.locals.slpRes);
   }
 );
 
@@ -201,7 +201,7 @@ router.post(
   "/formsubmit-pageviewid-v4-dev",
   createSlpMiddleware("comprehensive", "pageviewid", "v4", eventsTypes.SUBSCRIBE, apiKey, tagHash, adserverEndpoint),
   (req, res) => {
-    res.json(res.locals.rtiRes);
+    res.json(res.locals.slpRes);
   }
 );
 
@@ -210,7 +210,7 @@ router.post(
   "/formsubmit-duid-v4-dev",
   createSlpMiddleware("comprehensive","duid", "v4", eventsTypes.SUBSCRIBE, apiKey, tagHash, adserverEndpoint),
   (req, res) => {
-    res.json(res.locals.rtiRes);
+    res.json(res.locals.slpRes);
   }
 );
 
@@ -219,9 +219,9 @@ router.post(
   "/formsubmit-ip_useragent-v4-dev",
   createSlpMiddleware("comprehensive", "ip_useragent", "v4", eventsTypes.SUBSCRIBE, apiKey, tagHash, adserverEndpoint),
   (req, res) => {
-    res.json(res.locals.rtiRes);
+    document.
+    res.json(res.locals.slpRes);
   }
 );
-
 
 module.exports = router;

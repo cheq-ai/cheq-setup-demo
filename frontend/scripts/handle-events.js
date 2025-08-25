@@ -32,12 +32,18 @@ async function handleSubscribeV4(event, sessionSyncMode, apiVersion, env) {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(identifiers),
   })
-    .then((response) => response.json())
+    .then((response) => {
+      return response.json();
+    })
     .then((data) => {
       document.getElementById("cheq-rti-response-subscribe").style.display =
         "block";
+      document.getElementById("cheq-rti-request-subscribe").style.display =
+        "block";
+      const rtiReqContainer = document.getElementById("rti-request-container");
       const rtiResContainer = document.getElementById("rti-response-container");
-      rtiResContainer.innerHTML = JSON.stringify(data, null, 2);
+      rtiReqContainer.innerHTML = JSON.stringify(data.rtiReq, null, 2);
+      rtiResContainer.innerHTML = JSON.stringify(data.rtiRes, null, 2);
     });
 }
 

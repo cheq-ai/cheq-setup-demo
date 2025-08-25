@@ -55,7 +55,8 @@ h3 {
 }
 
 #cheq-rti-response-homepage,
-#cheq-rti-response-subscribe {
+#cheq-rti-response-subscribe,
+#cheq-rti-request-subscribe {
   margin: 0 100px 100px 100px;
 
   h4 {
