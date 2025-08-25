@@ -1,4 +1,5 @@
 async function handleSubscribe(event, sessionSyncMode, apiVersion, env) {
+  if (typeof hideCodeContainers === 'function') hideCodeContainers();
   fetch(`/subscribe-${sessionSyncMode}-${apiVersion}-${env}`, {
     method: "GET",
     headers: {
@@ -20,6 +21,7 @@ async function handleSubscribe(event, sessionSyncMode, apiVersion, env) {
 }
 
 async function handleSubscribeV4(event, sessionSyncMode, apiVersion, env) {
+  if (typeof hideCodeContainers === 'function') hideCodeContainers();
   const identifiers = {
     duidCookie: getCookieValue("_cq_duid"),
     pvidCookie: getCookieValue("_cq_pvid"),
@@ -50,6 +52,7 @@ async function handleSubscribeV4(event, sessionSyncMode, apiVersion, env) {
 
 async function handleSubmit(event, sessionSyncMode, apiVersion, env) {
   event.preventDefault();
+  if (typeof hideCodeContainers === 'function') hideCodeContainers();
 
   const formData = new FormData(event.target);
   const formObject = Object.fromEntries(formData.entries());
@@ -92,6 +95,7 @@ async function handleSubmit(event, sessionSyncMode, apiVersion, env) {
 
 async function handleSubmitV4(event, sessionSyncMode, apiVersion, env) {
   event.preventDefault();
+  if (typeof hideCodeContainers === 'function') hideCodeContainers();
 
   const formData = new FormData(event.target);
   const formObject = Object.fromEntries(formData.entries());
