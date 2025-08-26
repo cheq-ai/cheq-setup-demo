@@ -12,9 +12,9 @@
       class="ct_clicktrue_48293"
       data-jsonp="onCheqResponse"
     ></script>
-    <script src="../scripts/ui-script.js"></script>
-    <script src="../scripts/on-cheq-response.js"></script>
-    <script src="../scripts/handle-events.js"></script>
+    <script src="../../scripts/ui-script.js"></script>
+    <script src="../../scripts/on-cheq-response.js"></script>
+    <script src="../../scripts/handle-events.js"></script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="pages/style.css" />
@@ -26,6 +26,7 @@
       <h1>Welcome to my demo website</h1>
       <h3>This site illustrates Cheq's core capabilities</h3>
       <h4>ENV: prod - v4</h4>
+      <h5>https://obs.prod.cheqzone.com</h5>
       <a href="/logout" id="btn-logout">Logout</a>
       <a href="/" id="btn-envs">Envs</a>
     </div>
@@ -66,63 +67,51 @@
       <br />
       <br />
 
+      <!-- RTI -->
       <div>
-        <!-- RTI -->
-        <div>
-          <h3>API Version: 4</h3>
+        <h3>API Version: 4</h3>
 
-          <!-- IP & USER-AGENT -->
-          <button
-            onclick="handleSubscribeV4(event, 'ip_useragent', 'v4', 'prod')"
-          >
-            Subscribe - IP & User Agent
-          </button>
+        <!-- IP & USER-AGENT -->
+        <button onclick="handleSubscribeV4(event, 'ip_useragent', 'v4', 'prod')">
+          Subscribe - IP & User Agent
+        </button>
 
-          <!-- COOKIES ONLY -->
-          <button onclick="handleSubscribeV4(event, 'cookies', 'v4', 'prod')">
-            Subscribe - Cookies Only
-          </button>
+        <!-- COOKIES ONLY -->
+        <button onclick="handleSubscribeV4(event, 'cookies', 'v4', 'prod')">
+          Subscribe - Cookies Only
+        </button>
 
-          <!-- PAGE VIEW ID ONLY -->
-          <button
-            onclick="handleSubscribeV4(event, 'pageviewid', 'v4', 'staprodging')"
-          >
-            Subscribe - Page View ID Only
-          </button>
+        <!-- PAGE VIEW ID ONLY -->
+        <button onclick="handleSubscribeV4(event, 'pageviewid', 'v4', 'prod')">
+          Subscribe - Page View ID Only
+        </button>
 
-          <!-- DUID ONLY -->
-          <button onclick="handleSubscribeV4(event, 'duid', 'v4', 'prod')">
-            Subscribe - DUID Only
-          </button>
+        <!-- DUID ONLY -->
+        <button onclick="handleSubscribeV4(event, 'duid', 'v4', 'prod')">
+          Subscribe - DUID Only
+        </button>
 
-          <!-- Cookie and identifiers (Cookies + Page View ID + DUID + IP + User Agent) -->
-          <button
-            onclick="handleSubscribeV4(event, 'all_identifiers', 'v4', 'prod')"
-          >
-            Subscribe - All Identifiers
-          </button>
-        </div>
-      </div>
-
-      <code>
-        <pre><span id="event-response-el"></span></pre>
-      </code>
-
-      <div id="cheq-rti-response-subscribe" style="display: none">
-        <h4>SUBSCRIBE RTI Response:</h4>
-        <pre><span id="rti-response-container"></span></pre>
+        <!-- Cookie and identifiers (Cookies + Page View ID + DUID + IP + User Agent) -->
+        <button
+          onclick="handleSubscribeV4(event, 'all_identifiers', 'v4', 'prod')"
+        >
+          Subscribe - All Identifiers
+        </button>
       </div>
     </div>
+    <!-- Close tab-defend -->
+
     <!-- Form Guard -->
     <div id="tab-formguard" class="tab-content" style="display: none">
       <h3>API Version: 4</h3>
       <div class="forms-container">
+        <!-- ALL IDENTIFIERS: Cookies + Page View ID + DUID + IP + User Agent -->
         <div class="contact-us-form-container">
-          <h3>Contact Us - All (Cookies + Page View ID)</h3>
+          <h3>Subscribe - All Identifiers</h3>
           <form
-            id="contact-us-form-none"
+            id="contact-us-form-all"
             class="subscribe-form"
-            onsubmit="handleSubmitV4(event, 'none', 'v4', 'dev')"
+            onsubmit="handleSubmitV4(event, 'all_identifiers', 'v4', 'prod')"
           >
             <div class="form-group">
               <label for="name">Name:</label>
@@ -144,12 +133,13 @@
           </form>
         </div>
 
+        <!-- COOKIES ONLY -->
         <div class="contact-us-form-container">
-          <h3>Contact Us - Cookies</h3>
+          <h3>Subscribe - Cookies Only</h3>
           <form
-            id="contact-us-form-cookie"
+            id="contact-us-form-cookies"
             class="subscribe-form"
-            onsubmit="handleSubmitV4(event, 'rticookie', 'v4', 'dev')"
+            onsubmit="handleSubmitV4(event, 'cookies', 'v4', 'prod')"
           >
             <div class="form-group">
               <label for="name">Name:</label>
@@ -171,12 +161,69 @@
           </form>
         </div>
 
+        <!-- PAGE VIEW ID ONLY -->
         <div class="contact-us-form-container">
-          <h3>Contact Us - Page View ID</h3>
+          <h3>Subscribe - Page View ID Only</h3>
           <form
-            id="contact-us-form-requestid"
+            id="contact-us-form-pageviewid"
             class="subscribe-form"
-            onsubmit="handleSubmitV4(event, 'requestid', 'v4', 'dev')"
+            onsubmit="handleSubmitV4(event, 'pageviewid', 'v4', 'prod')"
+          >
+            <div class="form-group">
+              <label for="name">Name:</label>
+              <input type="text" id="name" name="name" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Email:</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number:</label>
+              <input type="tel" id="phone" name="phone" required />
+            </div>
+            <div class="form-group">
+              <label for="country">Country:</label>
+              <input type="text" id="country" name="country" required />
+            </div>
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+
+        <!-- DUID ONLY (new) -->
+        <div class="contact-us-form-container">
+          <h3>Subscribe - DUID Only</h3>
+          <form
+            id="contact-us-form-duid"
+            class="subscribe-form"
+            onsubmit="handleSubmitV4(event, 'duid', 'v4', 'prod')"
+          >
+            <div class="form-group">
+              <label for="name">Name:</label>
+              <input type="text" id="name" name="name" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Email:</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number:</label>
+              <input type="tel" id="phone" name="phone" required />
+            </div>
+            <div class="form-group">
+              <label for="country">Country:</label>
+              <input type="text" id="country" name="country" required />
+            </div>
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+
+        <!-- IP & USER AGENT (new) -->
+        <div class="contact-us-form-container">
+          <h3>Subscribe - IP &amp; User Agent</h3>
+          <form
+            id="contact-us-form-ipua"
+            class="subscribe-form"
+            onsubmit="handleSubmitV4(event, 'ip_useragent', 'v4', 'prod')"
           >
             <div class="form-group">
               <label for="name">Name:</label>
@@ -199,6 +246,18 @@
         </div>
       </div>
     </div>
-    <!-- Close tab-formguard -->
+
+    <!-- Output -->
+
+    <div id="cheq-rti-request-subscribe" style="display: none">
+      <h4> request </h4>
+      <pre><span id="rti-request-container"></span></pre>
+    </div>
+
+    <div id="cheq-rti-response-subscribe" style="display: none">
+      <h4> response </h4>
+      <pre><span id="rti-response-container"></span></pre>
+    </div>
+
   </body>
 </html>
