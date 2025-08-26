@@ -163,13 +163,14 @@ pre {
 }
 
 .subscribe-form {
-  width: 80%;
+  width: 100%;
   background-color: white;
-  padding: 20px;
+  padding: 5%;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  max-width: 400px;
-  margin-bottom: 20px;
+  max-width: 100%;
+  margin-bottom: 5%;
+  box-sizing: border-box;
 }
 
 .form-group {
@@ -204,31 +205,29 @@ pre {
   margin-bottom: 50px;
 }
 
-
 .forms-container {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: flex-start;
-  gap: 32px;
+  gap: 5%;
   width: 100%;
-  margin-bottom: 50px;
+  margin-bottom: 5%;
 }
 
 .contact-us-form-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 320px;
-  min-width: 280px;
-  max-width: 340px;
+  width: 16%;
+  max-width: 30%;
   box-sizing: border-box;
 }
 
 .contact-us-form-container h3 {
   text-align: center;
   margin-top: 0;
-  margin-bottom: 16px;
+  margin-bottom: 5%;
   font-size: 1.2em;
   font-weight: 600;
 }
@@ -247,4 +246,41 @@ pre {
 
 code {
   width: 100%;
+}
+
+/* Responsive styles for forms */
+@media (max-width: 768px) {
+  .forms-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .contact-us-form-container {
+    width: 90%;
+    max-width: 100%;
+  }
+
+  .subscribe-form {
+    width: 100%;
+    padding: 15px;
+  }
+
+  .contact-us-form-container h3 {
+    font-size: 1em;
+  }
+
+  .form-group label {
+    font-size: 0.9em;
+  }
+
+  .form-group input {
+    font-size: 0.9em;
+    padding: 8px;
+  }
+
+  button {
+    font-size: 0.9em;
+    padding: 0.8em 1.5em;
+  }
 }
