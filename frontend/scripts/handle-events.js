@@ -125,15 +125,13 @@ async function handleSubmitV4(event, sessionSyncMode, apiVersion, env) {
     if (response.ok) {
       const data = await response.json();
 
-      console.log(data)
-
-      document.getElementById("event-request-el").textContent = JSON.stringify(
+      document.getElementById("rti-request-container").textContent = JSON.stringify(
         data.slpReq,
         null,
         2
       );
 
-      document.getElementById("event-response-el").textContent = JSON.stringify(
+      document.getElementById("rti-response-container").textContent = JSON.stringify(
         data.slpRes,
         null,
         2

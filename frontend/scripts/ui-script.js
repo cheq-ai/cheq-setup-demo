@@ -1,18 +1,13 @@
-
 function hideCodeContainers() {
   // Hide/clear all code containers at the bottom of the page
-  const eventRequestEl = document.getElementById("event-request-el");
-  if (eventRequestEl) eventRequestEl.textContent = "";
-  const eventResponseEl = document.getElementById("event-response-el");
-  if (eventResponseEl) eventResponseEl.textContent = "";
   const rtiRequestContainer = document.getElementById("rti-request-container");
   if (rtiRequestContainer) rtiRequestContainer.textContent = "";
   const rtiResponseContainer = document.getElementById("rti-response-container");
   if (rtiResponseContainer) rtiResponseContainer.textContent = "";
   const rtiRequestDiv = document.getElementById("cheq-rti-request-subscribe");
-  if (rtiRequestDiv) rtiRequestDiv.style.display = "none";
+  if (rtiRequestDiv) rtiRequestDiv.style.display = "block";
   const rtiResponseDiv = document.getElementById("cheq-rti-response-subscribe");
-  if (rtiResponseDiv) rtiResponseDiv.style.display = "none";
+  if (rtiResponseDiv) rtiResponseDiv.style.display = "block";
 }
 
 function openTab(event, tabId) {
