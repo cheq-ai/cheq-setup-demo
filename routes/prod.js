@@ -15,6 +15,8 @@ router.get("/env-prod", createRtiMiddleware("none", "v1", eventsTypes.PAGE_LOAD,
     console.log("[prod.js] Invoked /env-prod route");
     const rtiRes = res.locals.rtiRes;
     const rtiResString = JSON.stringify(rtiRes, null, 2);
+
+    res.render("index-prod", { rtiResString });
 });
 
 router.get("/env-prod-consentmode", createRtiMiddleware("none", "v1", eventsTypes.PAGE_LOAD, false, apiKey, tagHash, adserverEndpoint), function (req, res) {

@@ -18,6 +18,8 @@ router.get("/env-dev", createRtiMiddleware("none", "v1", eventsTypes.PAGE_LOAD, 
     console.log("[dev.js] Invoked /env-dev route");
     const rtiRes = res.locals.rtiRes;
     const rtiResString = JSON.stringify(rtiRes, null, 2);
+
+    res.render("index-dev", { rtiResString });
 });
 
 router.get("/env-dev-consentmode", createRtiMiddleware("none", "v1", eventsTypes.PAGE_LOAD, false, apiKey, tagHash, adserverEndpoint), function (req, res) {

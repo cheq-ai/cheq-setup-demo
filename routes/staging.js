@@ -14,10 +14,17 @@ router.use(express.json());
 router.use(express.urlencoded({ extended: true }));
 
 // Pages Routes
-router.get("/env-staging", createRtiMiddleware("none", "v1", eventsTypes.PAGE_LOAD, false, apiKey, tagHash, adserverEndpoint), function (req, res) {
+router.get("/env-staging", createRtiMiddleware("none", "v1", eventsTypes.PAGE_LOAD, true, apiKey, tagHash, adserverEndpoint), function (req, res) {
     console.log("[staging.js] Invoked /env-staging route");
     const rtiRes = res.locals.rtiRes;
     const rtiResString = JSON.stringify(rtiRes, null, 2);
+
+    console.log(rtiRes)
+    console.log(rtiRes)
+    console.log(rtiRes)
+    console.log(rtiRes)
+
+    res.render("index-staging", { rtiResString });
 });
 
 router.get("/env-staging-consentmode", createRtiMiddleware("none", "v1", eventsTypes.PAGE_LOAD, false, apiKey, tagHash, adserverEndpoint), function (req, res) {

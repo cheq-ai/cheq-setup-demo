@@ -80,6 +80,8 @@ async function handleSubmit(event, sessionSyncMode, apiVersion, env) {
 
     if (response.ok) {
       const data = await response.json();
+      
+      console.log(data)
 
       document.getElementById("event-response-el").textContent = JSON.stringify(
         data,
