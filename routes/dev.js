@@ -15,11 +15,13 @@ router.use(express.urlencoded({ extended: true }));
 
 // Pages Routes
 router.get("/env-dev", createRtiMiddleware("none", "v1", eventsTypes.PAGE_LOAD, false, apiKey, tagHash, adserverEndpoint), function (req, res) {
+    console.log("[dev.js] Invoked /env-dev route");
     const rtiRes = res.locals.rtiRes;
     const rtiResString = JSON.stringify(rtiRes, null, 2);
 });
 
 router.get("/env-dev-consentmode", createRtiMiddleware("none", "v1", eventsTypes.PAGE_LOAD, false, apiKey, tagHash, adserverEndpoint), function (req, res) {
+    console.log("[dev.js] Invoked /env-dev-consentmode route");
     const rtiRes = res.locals.rtiRes;
     const rtiResString = JSON.stringify(rtiRes, null, 2);
 
@@ -27,6 +29,7 @@ router.get("/env-dev-consentmode", createRtiMiddleware("none", "v1", eventsTypes
 });
 
 router.get("/env-dev-bridge-connector", createRtiMiddleware("none", "v1", eventsTypes.PAGE_LOAD, false, apiKey, tagHash, adserverEndpoint), function (req, res) {
+    console.log("[dev.js] Invoked /env-dev-bridge-connector route");
     const rtiRes = res.locals.rtiRes;
     const rtiResString = JSON.stringify(rtiRes, null, 2);
 
@@ -34,10 +37,12 @@ router.get("/env-dev-bridge-connector", createRtiMiddleware("none", "v1", events
 });
 
 router.get("/env-dev-power-connector", createRtiMiddleware("none", "v1", eventsTypes.PAGE_LOAD, false, apiKey, tagHash, adserverEndpoint), function (req, res) {
+    console.log("[dev.js] Invoked /env-dev-power-connector route");
     res.render("dev/index-power-connector");
 });
 
 router.get("/env-dev-v4", function (req, res) {
+    console.log("[dev.js] Invoked /env-dev-v4 route");
     res.render("v4/index-dev");
 });
 
@@ -241,6 +246,7 @@ router.post(
   "/formsubmit-ip_useragent-v4-dev",
   createSlpMiddleware("comprehensive", "ip_useragent", "v4", eventsTypes.SUBSCRIBE, apiKey, tagHash, adserverEndpoint),
   (req, res) => {
+    console.log("[dev.js] Invoked /formsubmit-ip_useragent-v4-dev route");
     res.json({
       slpReq: res.locals.slpReq,
       slpRes: res.locals.slpRes

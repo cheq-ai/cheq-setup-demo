@@ -1,4 +1,5 @@
 async function handleSubscribe(event, sessionSyncMode, apiVersion, env) {
+  console.log("[handle-events.js] Invoked handleSubscribe");
   if (typeof hideCodeContainers === "function") hideCodeContainers();
   fetch(`/subscribe-${sessionSyncMode}-${apiVersion}-${env}`, {
     method: "GET",
@@ -21,6 +22,7 @@ async function handleSubscribe(event, sessionSyncMode, apiVersion, env) {
 }
 
 async function handleSubscribeV4(event, sessionSyncMode, apiVersion, env) {
+  console.log("[handle-events.js] Invoked handleSubscribeV4");
   if (typeof hideCodeContainers === "function") hideCodeContainers();
   const identifiers = {
     duidCookie: getCookieValue("_cq_duid"),
@@ -51,6 +53,7 @@ async function handleSubscribeV4(event, sessionSyncMode, apiVersion, env) {
 }
 
 async function handleSubmit(event, sessionSyncMode, apiVersion, env) {
+  console.log("[handle-events.js] Invoked handleSubmit");
   event.preventDefault();
   if (typeof hideCodeContainers === "function") hideCodeContainers();
 
@@ -94,6 +97,7 @@ async function handleSubmit(event, sessionSyncMode, apiVersion, env) {
 }
 
 async function handleSubmitV4(event, sessionSyncMode, apiVersion, env) {
+  console.log("[handle-events.js] Invoked handleSubmitV4");
   event.preventDefault();
   if (typeof hideCodeContainers === "function") hideCodeContainers();
 
@@ -146,6 +150,7 @@ async function handleSubmitV4(event, sessionSyncMode, apiVersion, env) {
 }
 
 const getCookieValue = (cookieName) => {
+  console.log("[handle-events.js] Invoked getCookieValue");
   return document.cookie
     .split("; ")
     .find((cookie) => cookie.startsWith(`${cookieName}=`))

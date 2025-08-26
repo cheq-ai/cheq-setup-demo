@@ -12,6 +12,7 @@ function createRtiMiddleware(
   tagHash,
   apiEndpoint
 ) {
+  console.log("[config-factory.js] Invoked createRtiMiddleware");
   return function (req, res, next) {
     const rtiOptions = {
       apiKey,
@@ -40,6 +41,7 @@ function createSlpMiddleware(
   tagHash,
   apiEndpoint
 ) {
+  console.log("[config-factory.js] Invoked createSlpMiddleware");
   return function (req, res, next) {
     const slpOptions = {
       apiKey,
