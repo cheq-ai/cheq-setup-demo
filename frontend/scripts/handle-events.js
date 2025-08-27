@@ -93,8 +93,6 @@ async function handleSubmit(event, sessionSyncMode, apiVersion, env) {
     if (response.ok) {
       const data = await response.json();
 
-      console.log(data);
-
       document.getElementById("event-response-el").textContent = JSON.stringify(
         data,
         null,
@@ -139,9 +137,14 @@ async function handleSubmitV4(event, sessionSyncMode, apiVersion, env) {
     if (response.ok) {
       const data = await response.json();
 
+      console.log(data);
+
+      document.getElementById("cheq-rti-request-headers-subscribe").display =
+        "block";
+      document.getElementById("rti-request-headers-container").textContent =
+        JSON.stringify(data.slpReqHeaders, null, 2);
       document.getElementById("rti-request-container").textContent =
         JSON.stringify(data.slpReq, null, 2);
-
       document.getElementById("rti-response-container").textContent =
         JSON.stringify(data.slpRes, null, 2);
     } else {

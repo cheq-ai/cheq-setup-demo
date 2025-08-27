@@ -206,6 +206,7 @@ router.post(
   createSlpMiddleware("comprehensive", "all_identifiers", "v4", eventsTypes.SUBSCRIBE, apiKey, tagHash, adserverEndpoint),
   (req, res) => {
     res.json({
+      slpReqHeaders: res.locals.slpReqHeaders,
       slpReq: res.locals.slpReq,
       slpRes: res.locals.slpRes
     });
@@ -218,6 +219,7 @@ router.post(
   createSlpMiddleware("comprehensive", "cookies", "v4", eventsTypes.SUBSCRIBE, apiKey, tagHash, adserverEndpoint),
   (req, res) => {
     res.json({
+      slpReqHeaders: res.locals.slpReqHeaders,
       slpReq: res.locals.slpReq,
       slpRes: res.locals.slpRes
     });
@@ -230,6 +232,7 @@ router.post(
   createSlpMiddleware("comprehensive", "pageviewid", "v4", eventsTypes.SUBSCRIBE, apiKey, tagHash, adserverEndpoint),
   (req, res) => {
     res.json({
+      slpReqHeaders: res.locals.slpReqHeaders,
       slpReq: res.locals.slpReq,
       slpRes: res.locals.slpRes
     });
@@ -242,6 +245,7 @@ router.post(
   createSlpMiddleware("comprehensive","duid", "v4", eventsTypes.SUBSCRIBE, apiKey, tagHash, adserverEndpoint),
   (req, res) => {
     res.json({
+      slpReqHeaders: res.locals.slpReqHeaders,
       slpReq: res.locals.slpReq,
       slpRes: res.locals.slpRes
     });
@@ -255,6 +259,7 @@ router.post(
   (req, res) => {
     console.log("[dev.js] Invoked /formsubmit-ip_useragent-v4-dev route");
     res.json({
+      slpReqHeaders: res.locals.slpReqHeaders,
       slpReq: res.locals.slpReq,
       slpRes: res.locals.slpRes
     });
