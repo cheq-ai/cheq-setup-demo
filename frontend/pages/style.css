@@ -56,7 +56,8 @@ h3 {
 
 #cheq-rti-response-homepage,
 #cheq-rti-response-subscribe,
-#cheq-rti-request-subscribe {
+#cheq-rti-request-subscribe,
+#cheq-rti-request-headers-subscribe {
   margin: 0 100px 100px 100px;
   max-width: 80%;
 

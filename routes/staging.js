@@ -19,11 +19,6 @@ router.get("/env-staging", createRtiMiddleware("none", "v1", eventsTypes.PAGE_LO
     const rtiRes = res.locals.rtiRes;
     const rtiResString = JSON.stringify(rtiRes, null, 2);
 
-    console.log(rtiRes)
-    console.log(rtiRes)
-    console.log(rtiRes)
-    console.log(rtiRes)
-
     res.render("index-staging", { rtiResString });
 });
 

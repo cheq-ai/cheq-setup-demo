@@ -40,13 +40,25 @@ async function handleSubscribeV4(event, sessionSyncMode, apiVersion, env) {
       return response.json();
     })
     .then((data) => {
+      const rtiReqHeadersContainer = document.getElementById(
+        "rti-request-headers-container"
+      );
       const rtiReqContainer = document.getElementById("rti-request-container");
       const rtiResContainer = document.getElementById("rti-response-container");
 
-      document.getElementById("cheq-rti-response-subscribe").style.display =
-        "block";
+      document.getElementById(
+        "cheq-rti-request-headers-subscribe"
+      ).style.display = "block";
       document.getElementById("cheq-rti-request-subscribe").style.display =
         "block";
+      document.getElementById("cheq-rti-response-subscribe").style.display =
+        "block";
+
+      rtiReqHeadersContainer.innerHTML = JSON.stringify(
+        data.rtiReqHeaders,
+        null,
+        2
+      );
       rtiReqContainer.innerHTML = JSON.stringify(data.rtiReq, null, 2);
       rtiResContainer.innerHTML = JSON.stringify(data.rtiRes, null, 2);
     });
@@ -80,8 +92,8 @@ async function handleSubmit(event, sessionSyncMode, apiVersion, env) {
 
     if (response.ok) {
       const data = await response.json();
-      
-      console.log(data)
+
+      console.log(data);
 
       document.getElementById("event-response-el").textContent = JSON.stringify(
         data,
@@ -127,17 +139,11 @@ async function handleSubmitV4(event, sessionSyncMode, apiVersion, env) {
     if (response.ok) {
       const data = await response.json();
 
-      document.getElementById("rti-request-container").textContent = JSON.stringify(
-        data.slpReq,
-        null,
-        2
-      );
+      document.getElementById("rti-request-container").textContent =
+        JSON.stringify(data.slpReq, null, 2);
 
-      document.getElementById("rti-response-container").textContent = JSON.stringify(
-        data.slpRes,
-        null,
-        2
-      );
+      document.getElementById("rti-response-container").textContent =
+        JSON.stringify(data.slpRes, null, 2);
     } else {
       console.error("Error submitting form:", response.statusText);
       document.getElementById("rti-response-container").textContent =

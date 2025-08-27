@@ -92,6 +92,7 @@ router.post(
   createRtiMiddleware("ip_useragent", "v4", eventsTypes.SUBSCRIBE, true, apiKey, tagHash, adserverEndpoint),
   function (req, res) {
     res.json({
+      rtiReqHeaders: res.locals.rtiReqHeaders,
       rtiReq: res.locals.rtiReq,
       rtiRes: res.locals.rtiRes
     });
@@ -104,6 +105,7 @@ router.post(
   createRtiMiddleware("cookies", "v4", eventsTypes.SUBSCRIBE, true, apiKey, tagHash, adserverEndpoint),
   function (req, res) {
     res.json({
+      rtiReqHeaders: res.locals.rtiReqHeaders,
       rtiReq: res.locals.rtiReq,
       rtiRes: res.locals.rtiRes
     });
@@ -116,6 +118,7 @@ router.post(
   createRtiMiddleware("pageviewid", "v4", eventsTypes.SUBSCRIBE, true, apiKey, tagHash, adserverEndpoint),
   function (req, res) {
     res.json({
+      rtiReqHeaders: res.locals.rtiReqHeaders,
       rtiReq: res.locals.rtiReq,
       rtiRes: res.locals.rtiRes
     });
@@ -128,6 +131,7 @@ router.post(
   createRtiMiddleware("duid", "v4", eventsTypes.SUBSCRIBE, true, apiKey, tagHash, adserverEndpoint),
   (req, res) => {
     res.json({
+      rtiReqHeaders: res.locals.rtiReqHeaders,
       rtiReq: res.locals.rtiReq,
       rtiRes: res.locals.rtiRes
     });
@@ -140,6 +144,7 @@ router.post(
   createRtiMiddleware("all_identifiers", "v4", eventsTypes.SUBSCRIBE, true, apiKey, tagHash, adserverEndpoint),
   (req, res) => {
     res.json({
+      rtiReqHeaders: res.locals.rtiReqHeaders,
       rtiReq: res.locals.rtiReq,
       rtiRes: res.locals.rtiRes
     });
