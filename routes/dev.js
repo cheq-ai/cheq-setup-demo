@@ -8,7 +8,7 @@ const { createRtiMiddleware, createSlpMiddleware } = require('../config/config-f
 // Vars
 const apiKey = process.env.API_KEY_DEV;
 const tagHash = process.env.TAG_HASH_DEV;
-const adserverEndpoint = "https://obs.dev.cheqzone.com"
+const adserverEndpoint = "https://obs.1.dev.cheqzone.com"
 
 router.use(express.json());
 router.use(express.urlencoded({ extended: true }));
