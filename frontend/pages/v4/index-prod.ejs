@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script
+      src="https://assets.adobedtm.com/2273b6608699/2aa59a6f14de/launch-a17e1d267a9c.min.js"
+      async
+    ></script>
+    <script
+      async
+      src="https://ob.herbgreencolumn.com/i/e83ec5a9324076463b54b904092ca4bb.js"
+      data-ch="cheq4ppc"
+      class="ct_clicktrue_48293"
+      data-jsonp="onCheqResponse"
+    ></script>
+    <script src="../../scripts/ui-script.js"></script>
+    <script src="../../scripts/on-cheq-response.js"></script>
+    <script src="../../scripts/handle-events.js"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="pages/style.css" />
+    <title>My Website</title>
+  </head>
+  <body>
+    <div class="header">
+      <br />
+      <h1>Welcome to my demo website</h1>
+      <h3>This site illustrates Cheq's core capabilities</h3>
+      <h4>ENV: prod - v4</h4>
+      <h5>https://obs.prod.cheqzone.com</h5>
+      <a href="/logout" id="btn-logout">Logout</a>
+      <a href="/" id="btn-envs">Envs</a>
+    </div>
+
+    <hr />
+
+    <div class="tabs">
+      <button class="tab-button" onclick="openTab(event, 'tab-defend')">
+        Defend (RTI)
+      </button>
+      <button class="tab-button" onclick="openTab(event, 'tab-formguard')">
+        Form Guard (SLP)
+      </button>
+    </div>
+    <br />
+    <br />
+    <br />
+    <div id="tab-defend" class="tab-content" style="display: none">
+      <h2>CHEQ Defend</h2>
+      <p>
+        Clicking the Subscribe button sends an RTI request with the event of
+        SUBSCRIBE
+      </p>
+      <p>
+        UNLESS - you are an invalid visit. In that case you will receive a
+        'redirect' html file as a network response 🤖👋🏼
+      </p>
+      <span>
+        <b>setting custom invalid bot user-agent:</b>
+        <span id="user-agent-string"
+          >Mozilla/5.0 (compatible; Googlebot/2.1;
+          +http://www.google.com/bot.html)</span
+        >
+      </span>
+      <span onclick="copyToClipboard()" style="cursor: pointer">📑</span>
+
+      <br />
+      <br />
+      <br />
+
+      <!-- RTI -->
+      <div>
+        <h3>API Version: 4</h3>
+
+        <!-- IP & USER-AGENT -->
+        <button onclick="handleSubscribeV4(event, 'ip_useragent', 'v4', 'prod')">
+          Subscribe - IP & User Agent
+        </button>
+
+        <!-- COOKIES ONLY -->
+        <button onclick="handleSubscribeV4(event, 'cookies', 'v4', 'prod')">
+          Subscribe - Cookies Only
+        </button>
+
+        <!-- PAGE VIEW ID ONLY -->
+        <button onclick="handleSubscribeV4(event, 'pageviewid', 'v4', 'prod')">
+          Subscribe - Page View ID Only
+        </button>
+
+        <!-- DUID ONLY -->
+        <button onclick="handleSubscribeV4(event, 'duid', 'v4', 'prod')">
+          Subscribe - DUID Only
+        </button>
+
+        <!-- Cookie and identifiers (Cookies + Page View ID + DUID + IP + User Agent) -->
+        <button
+          onclick="handleSubscribeV4(event, 'all_identifiers', 'v4', 'prod')"
+        >
+          Subscribe - All Identifiers
+        </button>
+      </div>
+    </div>
+    <!-- Close tab-defend -->
+
+    <!-- Form Guard -->
+    <div id="tab-formguard" class="tab-content" style="display: none">
+      <h3>API Version: 4</h3>
+      <div class="forms-container">
+        <!-- ALL IDENTIFIERS: Cookies + Page View ID + DUID + IP + User Agent -->
+        <div class="contact-us-form-container">
+          <h3>Subscribe - All Identifiers</h3>
+          <form
+            id="contact-us-form-all"
+            class="subscribe-form"
+            onsubmit="handleSubmitV4(event, 'all_identifiers', 'v4', 'prod')"
+          >
+            <div class="form-group">
+              <label for="name">Name:</label>
+              <input type="text" id="name" name="name" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Email:</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number:</label>
+              <input type="tel" id="phone" name="phone" required />
+            </div>
+            <div class="form-group">
+              <label for="country">Country:</label>
+              <input type="text" id="country" name="country" required />
+            </div>
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+
+        <!-- COOKIES ONLY -->
+        <div class="contact-us-form-container">
+          <h3>Subscribe - Cookies Only</h3>
+          <form
+            id="contact-us-form-cookies"
+            class="subscribe-form"
+            onsubmit="handleSubmitV4(event, 'cookies', 'v4', 'prod')"
+          >
+            <div class="form-group">
+              <label for="name">Name:</label>
+              <input type="text" id="name" name="name" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Email:</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number:</label>
+              <input type="tel" id="phone" name="phone" required />
+            </div>
+            <div class="form-group">
+              <label for="country">Country:</label>
+              <input type="text" id="country" name="country" required />
+            </div>
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+
+        <!-- PAGE VIEW ID ONLY -->
+        <div class="contact-us-form-container">
+          <h3>Subscribe - Page View ID Only</h3>
+          <form
+            id="contact-us-form-pageviewid"
+            class="subscribe-form"
+            onsubmit="handleSubmitV4(event, 'pageviewid', 'v4', 'prod')"
+          >
+            <div class="form-group">
+              <label for="name">Name:</label>
+              <input type="text" id="name" name="name" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Email:</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number:</label>
+              <input type="tel" id="phone" name="phone" required />
+            </div>
+            <div class="form-group">
+              <label for="country">Country:</label>
+              <input type="text" id="country" name="country" required />
+            </div>
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+
+        <!-- DUID ONLY (new) -->
+        <div class="contact-us-form-container">
+          <h3>Subscribe - DUID Only</h3>
+          <form
+            id="contact-us-form-duid"
+            class="subscribe-form"
+            onsubmit="handleSubmitV4(event, 'duid', 'v4', 'prod')"
+          >
+            <div class="form-group">
+              <label for="name">Name:</label>
+              <input type="text" id="name" name="name" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Email:</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number:</label>
+              <input type="tel" id="phone" name="phone" required />
+            </div>
+            <div class="form-group">
+              <label for="country">Country:</label>
+              <input type="text" id="country" name="country" required />
+            </div>
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+
+        <!-- IP & USER AGENT (new) -->
+        <div class="contact-us-form-container">
+          <h3>Subscribe - IP &amp; User Agent</h3>
+          <form
+            id="contact-us-form-ipua"
+            class="subscribe-form"
+            onsubmit="handleSubmitV4(event, 'ip_useragent', 'v4', 'prod')"
+          >
+            <div class="form-group">
+              <label for="name">Name:</label>
+              <input type="text" id="name" name="name" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Email:</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number:</label>
+              <input type="tel" id="phone" name="phone" required />
+            </div>
+            <div class="form-group">
+              <label for="country">Country:</label>
+              <input type="text" id="country" name="country" required />
+            </div>
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Output -->
+
+    <div id="cheq-rti-request-subscribe" style="display: none">
+      <h4> request </h4>
+      <pre><span id="rti-request-container"></span></pre>
+    </div>
+
+    <div id="cheq-rti-response-subscribe" style="display: none">
+      <h4> response </h4>
+      <pre><span id="rti-response-container"></span></pre>
+    </div>
+
+  </body>
+</html>

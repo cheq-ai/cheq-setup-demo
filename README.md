@@ -1,29 +1,28 @@
 # Cheq Adserver Automation Demo Site
 
-This is a simple demo site that demonstrates cheq's adserver/core functionality.
-core automation project: https://gitlab.com/ct-dev/qa/core-test-automation
-This site should be publicly available at https://prospective-viki-cheq-5aade980.koyeb.app/ 
+This is a simple demo site that demonstrates cheq's adserver/core functionality.    
+This site should be publicly available at https://square-jennica-cheq-fcc8de3e.koyeb.app/   
+core automation project: https://gitlab.com/ct-dev/qa/core-test-automation    
 
-## Getting Started
+## Run Locally
 
-1. Go to the website
-2. Click any link -> everything works
-3. Act as an invalid user by editing your user-agent string to a bot: 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)'
-4. Click the Subscribe button -> you are now identfied as invalid and redirected to the redirect.html page
+npm install  
+npm run start -> go to http://localhost:5000
 
 ## Behind the Scenes
 
-This service operates by using Cheq's RTI middleware: https://www.npmjs.com/package/@cheq.ai/cheq-middlewares
-It intercepts the request to the 'Subscribe' page and validates the visit. If invalid, redirect.
+This service operates by using Cheq's RTI (Defend) and SLP (Form-Guard) middlewares: https://www.npmjs.com/package/@cheq.ai/cheq-middlewares
+Express middlewares github repo: https://github.com/cheq-ai/cheq-middlewares
+To contribute to the middleware project - push with a new package.json version to main -> the CICD (github workflows) will take it from there and publish the package
 
 ## Contribution
 
-If you want to contribute, the repo is here: *****ADD_LINK_TO_REPO*****
+To contribute to this project the repo is here: https://github.com/cheq-ai/cheq-setup-demo and the host is https://www.koyeb.com/
 
+## references:
 
-
-adserver env: staging
-network id 8914
-searchid/tagid 50193
-
-invoke: npm run start -> go to localhost:5000
+Host: https://app.koyeb.com/
+Demo site: https://square-jennica-cheq-fcc8de3e.koyeb.app/
+Demo site repo: https://github.com/cheq-ai/cheq-setup-demo
+rti middleware repo: https://github.com/cheq-ai/cheq-middlewares
+rti middleware npm: https://www.npmjs.com/package/@cheq.ai/cheq-middlewares?activeTab=code

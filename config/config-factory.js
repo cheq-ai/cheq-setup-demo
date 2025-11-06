@@ -1,0 +1,59 @@
+const path = require("path");
+const dotenv = require("dotenv");
+dotenv.config();
+const { rti, slp } = require("@cheq.ai/cheq-middlewares");
+
+function createRtiMiddleware(
+  sessionSyncMode,
+  apiVersion,
+  eventType,
+  blockingActive,
+  apiKey,
+  tagHash,
+  apiEndpoint
+) {
+  console.log("[config-factory.js] Invoked createRtiMiddleware");
+  return function (req, res, next) {
+    const rtiOptions = {
+      apiKey,
+      tagHash,
+      apiVersion,
+      apiEndpoint,
+      mode: blockingActive ? "blocking" : "monitoring",
+      redirectUrl: `/redirect`,
+      sessionSyncMode,
+      data: req.body,
+      callback: (req, res, next) => {
+        res.sendFile(path.join(__dirname, "../frontend/pages/captcha.html"));
+      },
+    };
+
+    return rti(rtiOptions)(eventType)(req, res, next);
+  };
+}
+
+function createSlpMiddleware(
+  mode,
+  sessionSyncMode,
+  apiVersion,
+  eventType,
+  apiKey,
+  tagHash,
+  apiEndpoint
+) {
+  console.log("[config-factory.js] Invoked createSlpMiddleware");
+  return function (req, res, next) {
+    const slpOptions = {
+      apiKey,
+      tagHash,
+      apiVersion,
+      apiEndpoint,
+      mode,
+      timeout: null,
+      sessionSyncMode,
+    };
+    return slp(slpOptions)(eventType)(req, res, next);
+  };
+}
+
+module.exports = { createRtiMiddleware, createSlpMiddleware };
