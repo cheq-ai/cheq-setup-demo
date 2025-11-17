@@ -72,7 +72,9 @@
         <h3>API Version: 4</h3>
 
         <!-- IP & USER-AGENT -->
-        <button onclick="handleSubscribeV4(event, 'ip_useragent', 'v4', 'staging')">
+        <button
+          onclick="handleSubscribeV4(event, 'ip_useragent', 'v4', 'staging')"
+        >
           Subscribe - IP & User Agent
         </button>
 
@@ -82,7 +84,9 @@
         </button>
 
         <!-- PAGE VIEW ID ONLY -->
-        <button onclick="handleSubscribeV4(event, 'pageviewid', 'v4', 'staging')">
+        <button
+          onclick="handleSubscribeV4(event, 'pageviewid', 'v4', 'staging')"
+        >
           Subscribe - Page View ID Only
         </button>
 
@@ -248,6 +252,11 @@
     </div>
 
     <!-- Output -->
+
+    <div id="cheq-rti-request-headers-subscribe">
+      <h4>request headers</h4>
+      <pre><span id="rti-request-headers-container"></span></pre>
+    </div>
 
     <div id="cheq-rti-request-subscribe" style="display: none">
       <h4>request</h4>
