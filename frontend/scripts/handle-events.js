@@ -9,7 +9,7 @@ async function handleSubscribe(event, sessionSyncMode, apiVersion, env) {
         document.cookie
           ?.split("; ")
           .find((part) => part.startsWith("_cheq_rti=")) || undefined,
-      "Request-Id": sessionStorage.getItem("RequestId"),
+      "request-id": sessionStorage.getItem("req"),
     },
   })
     .then((response) => response.json())
