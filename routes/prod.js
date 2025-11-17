@@ -6,12 +6,14 @@ const { eventsTypes } = require("@cheq.ai/cheq-middlewares");
 const { createRtiMiddleware, createSlpMiddleware } = require('../config/config-factory');
 
 // Vars
-const apiKey = process.env.API_KEY_PROD;
-const tagHash = process.env.TAG_HASH_PROD;
+const apiKeyV3 = process.env.API_KEY_V3_PROD;
+const tagHashV3 = process.env.TAG_HASH_V3_PROD;
+const apiKeyV4 = process.env.API_KEY_V4_PROD;
+const tagHashV4 = process.env.TAG_HASH_V4_PROD;
 const adserverEndpoint = "https://obs.cheqzone.com"
 
 // Pages Routes
-router.get("/env-prod", createRtiMiddleware("none", "v1", eventsTypes.PAGE_LOAD, false, apiKey, tagHash, adserverEndpoint), function (req, res) {
+router.get("/env-prod", createRtiMiddleware("none", "v1", eventsTypes.PAGE_LOAD, false, apiKeyV3, tagHashV3, adserverEndpoint), function (req, res) {
     console.log("[prod.js] Invoked /env-prod route");
     const rtiRes = res.locals.rtiRes;
     const rtiResString = JSON.stringify(rtiRes, null, 2);
@@ -19,7 +21,7 @@ router.get("/env-prod", createRtiMiddleware("none", "v1", eventsTypes.PAGE_LOAD,
     res.render("index-prod", { rtiResString });
 });
 
-router.get("/env-prod-consentmode", createRtiMiddleware("none", "v1", eventsTypes.PAGE_LOAD, false, apiKey, tagHash, adserverEndpoint), function (req, res) {
+router.get("/env-prod-consentmode", createRtiMiddleware("none", "v1", eventsTypes.PAGE_LOAD, false, apiKeyV3, tagHashV3, adserverEndpoint), function (req, res) {
     console.log("[prod.js] Invoked /env-prod-consentmode route");
     const rtiRes = res.locals.rtiRes;
     const rtiResString = JSON.stringify(rtiRes, null, 2);
@@ -27,7 +29,7 @@ router.get("/env-prod-consentmode", createRtiMiddleware("none", "v1", eventsType
     res.render("index-prod-consentmode", { rtiResString });
 });
 
-router.get("/env-prod-bridge-connector", createRtiMiddleware("none", "v1", eventsTypes.PAGE_LOAD, false, apiKey, tagHash, adserverEndpoint), function (req, res) {
+router.get("/env-prod-bridge-connector", createRtiMiddleware("none", "v1", eventsTypes.PAGE_LOAD, false, apiKeyV3, tagHashV3, adserverEndpoint), function (req, res) {
     console.log("[prod.js] Invoked /env-prod-bridge-connector route");
     const rtiRes = res.locals.rtiRes;
     const rtiResString = JSON.stringify(rtiRes, null, 2);
@@ -35,7 +37,7 @@ router.get("/env-prod-bridge-connector", createRtiMiddleware("none", "v1", event
     res.render("prod/index-bridge-connector", { rtiResString });
 });
 
-router.get("/env-prod-power-connector", createRtiMiddleware("none", "v1", eventsTypes.PAGE_LOAD, false, apiKey, tagHash, adserverEndpoint), function (req, res) {
+router.get("/env-prod-power-connector", createRtiMiddleware("none", "v1", eventsTypes.PAGE_LOAD, false, apiKeyV3, tagHashV3, adserverEndpoint), function (req, res) {
     console.log("[prod.js] Invoked /env-prod-power-connector route");
     res.render("prod/index-power-connector");
 });
@@ -48,37 +50,37 @@ router.get("/env-prod-v4", function (req, res) {
 // ** Defend Routes ** //
 // RTI V1 //
 // All client-server sync methods
-router.get("/subscribe-none-v1-prod", createRtiMiddleware("none","v1",eventsTypes.SUBSCRIBE, true, apiKey, tagHash, adserverEndpoint), function (req, res) {
+router.get("/subscribe-none-v1-prod", createRtiMiddleware("none","v1",eventsTypes.SUBSCRIBE, true, apiKeyV3, tagHashV3, adserverEndpoint), function (req, res) {
     res.json(res.locals.rtiRes);
 });
 // banRti 
-router.get("/subscribe-banrti-v1-prod", createRtiMiddleware("banRti","v1",eventsTypes.SUBSCRIBE, true, apiKey, tagHash, adserverEndpoint), function (req, res) {
+router.get("/subscribe-banrti-v1-prod", createRtiMiddleware("banRti","v1",eventsTypes.SUBSCRIBE, true, apiKeyV3, tagHashV3, adserverEndpoint), function (req, res) {
     res.json(res.locals.rtiRes);
 });
 // rtiCookie
-router.get("/subscribe-rticookie-v1-prod", createRtiMiddleware("rtiCookie","v1",eventsTypes.SUBSCRIBE, true, apiKey, tagHash, adserverEndpoint), function (req, res) {
+router.get("/subscribe-rticookie-v1-prod", createRtiMiddleware("rtiCookie","v1",eventsTypes.SUBSCRIBE, true, apiKeyV3, tagHashV3, adserverEndpoint), function (req, res) {
 res.json(res.locals.rtiRes);
 });
 // requestId
-router.get("/subscribe-requestid-v1-prod", createRtiMiddleware("requestId","v1",eventsTypes.SUBSCRIBE, true, apiKey, tagHash, adserverEndpoint), function (req, res) {
+router.get("/subscribe-requestid-v1-prod", createRtiMiddleware("requestId","v1",eventsTypes.SUBSCRIBE, true, apiKeyV3, tagHashV3, adserverEndpoint), function (req, res) {
 res.json(res.locals.rtiRes);
 });
 
 // RTI V3 //
 // All client-server sync methods
-router.get("/subscribe-none-v3-prod", createRtiMiddleware("none","v3",eventsTypes.SUBSCRIBE, true, apiKey, tagHash, adserverEndpoint), function (req, res) {
+router.get("/subscribe-none-v3-prod", createRtiMiddleware("none","v3",eventsTypes.SUBSCRIBE, true, apiKeyV3, tagHashV3, adserverEndpoint), function (req, res) {
     res.json(res.locals.rtiRes);
 });
 // banRti 
-router.get("/subscribe-banrti-v3-prod", createRtiMiddleware("banRti","v3",eventsTypes.SUBSCRIBE, true, apiKey, tagHash, adserverEndpoint), function (req, res) {
+router.get("/subscribe-banrti-v3-prod", createRtiMiddleware("banRti","v3",eventsTypes.SUBSCRIBE, true, apiKeyV3, tagHashV3, adserverEndpoint), function (req, res) {
     res.json(res.locals.rtiRes);
 });
 // rtiCookie
-router.get("/subscribe-rticookie-v3-prod", createRtiMiddleware("rtiCookie","v3",eventsTypes.SUBSCRIBE, true, apiKey, tagHash, adserverEndpoint), function (req, res) {
+router.get("/subscribe-rticookie-v3-prod", createRtiMiddleware("rtiCookie","v3",eventsTypes.SUBSCRIBE, true, apiKeyV3, tagHashV3, adserverEndpoint), function (req, res) {
     res.json(res.locals.rtiRes);
 });
 // requestId
-router.get("/subscribe-requestid-v3-prod", createRtiMiddleware("requestId","v3",eventsTypes.SUBSCRIBE, true, apiKey, tagHash, adserverEndpoint), function (req, res) {
+router.get("/subscribe-requestid-v3-prod", createRtiMiddleware("requestId","v3",eventsTypes.SUBSCRIBE, true, apiKeyV3, tagHashV3, adserverEndpoint), function (req, res) {
     res.json(res.locals.rtiRes);
 });
 
@@ -86,7 +88,7 @@ router.get("/subscribe-requestid-v3-prod", createRtiMiddleware("requestId","v3",
 // IP & User Agent
 router.post(
   "/subscribe-ip_useragent-v4-prod",
-  createRtiMiddleware("ip_useragent", "v4", eventsTypes.SUBSCRIBE, true, apiKey, tagHash, adserverEndpoint),
+  createRtiMiddleware("ip_useragent", "v4", eventsTypes.SUBSCRIBE, true, apiKeyV4, tagHashV4, adserverEndpoint),
   function (req, res) {
     res.json({
       rtiReq: res.locals.rtiReq,
@@ -98,7 +100,7 @@ router.post(
 // Cookies only
 router.post(
   "/subscribe-cookies-v4-prod",
-  createRtiMiddleware("cookies", "v4", eventsTypes.SUBSCRIBE, true, apiKey, tagHash, adserverEndpoint),
+  createRtiMiddleware("cookies", "v4", eventsTypes.SUBSCRIBE, true, apiKeyV4, tagHashV4, adserverEndpoint),
   function (req, res) {
     res.json({
       rtiReq: res.locals.rtiReq,
@@ -110,7 +112,7 @@ router.post(
 // Page View ID only
 router.post(
   "/subscribe-pageviewid-v4-prod",
-  createRtiMiddleware("pageviewid", "v4", eventsTypes.SUBSCRIBE, true, apiKey, tagHash, adserverEndpoint),
+  createRtiMiddleware("pageviewid", "v4", eventsTypes.SUBSCRIBE, true, apiKeyV4, tagHashV4, adserverEndpoint),
   function (req, res) {
     res.json({
       rtiReq: res.locals.rtiReq,
@@ -122,7 +124,7 @@ router.post(
 // DUID only
 router.post(
   "/subscribe-duid-v4-prod",
-  createRtiMiddleware("duid", "v4", eventsTypes.SUBSCRIBE, true, apiKey, tagHash, adserverEndpoint),
+  createRtiMiddleware("duid", "v4", eventsTypes.SUBSCRIBE, true, apiKeyV4, tagHashV4, adserverEndpoint),
   (req, res) => {
     res.json({
       rtiReq: res.locals.rtiReq,
@@ -134,7 +136,7 @@ router.post(
 // All identifiers (Cookies + Page View ID + DUID + IP + User Agent)
 router.post(
   "/subscribe-all_identifiers-v4-prod",
-  createRtiMiddleware("all_identifiers", "v4", eventsTypes.SUBSCRIBE, true, apiKey, tagHash, adserverEndpoint),
+  createRtiMiddleware("all_identifiers", "v4", eventsTypes.SUBSCRIBE, true, apiKeyV4, tagHashV4, adserverEndpoint),
   (req, res) => {
     res.json({
       rtiReq: res.locals.rtiReq,
@@ -145,46 +147,46 @@ router.post(
 
 // ** Form-Guard Routes ** //
 // v1 Regular Flow
-router.post('/formsubmit-none-v1', createSlpMiddleware("fast","none","v1",eventsTypes.SUBSCRIBE, apiKey, tagHash, adserverEndpoint), (req, res) => {
+router.post('/formsubmit-none-v1', createSlpMiddleware("fast","none","v1",eventsTypes.SUBSCRIBE, apiKeyV3, tagHashV3, adserverEndpoint), (req, res) => {
     const slpRes = res.locals.slpRes
 
     res.json(slpRes);
 });
 
-router.post('/formsubmit-banrti-v1', createSlpMiddleware("fast","banRti","v1",eventsTypes.SUBSCRIBE, apiKey, tagHash, adserverEndpoint), (req, res) => {
+router.post('/formsubmit-banrti-v1', createSlpMiddleware("fast","banRti","v1",eventsTypes.SUBSCRIBE, apiKeyV3, tagHashV3, adserverEndpoint), (req, res) => {
     const slpRes = res.locals.slpRes
 
     res.json(slpRes);
 });
 
-router.post('/formsubmit-rticookie-v1', createSlpMiddleware("fast","rtiCookie","v1",eventsTypes.SUBSCRIBE, apiKey, tagHash, adserverEndpoint), (req, res) => {
+router.post('/formsubmit-rticookie-v1', createSlpMiddleware("fast","rtiCookie","v1",eventsTypes.SUBSCRIBE, apiKeyV3, tagHashV3, adserverEndpoint), (req, res) => {
     const slpRes = res.locals.slpRes
 
     res.json(slpRes);
 });
-router.post('/formsubmit-requestid-v1', createSlpMiddleware("fast","requestId","v1",eventsTypes.SUBSCRIBE, apiKey, tagHash, adserverEndpoint), (req, res) => {
+router.post('/formsubmit-requestid-v1', createSlpMiddleware("fast","requestId","v1",eventsTypes.SUBSCRIBE, apiKeyV3, tagHashV3, adserverEndpoint), (req, res) => {
     const slpRes = res.locals.slpRes
 
     res.json(slpRes);
 });
 
 // v3 Regular Flow
-router.post('/formsubmit-none-v3', createSlpMiddleware("fast","none","v3",eventsTypes.SUBSCRIBE, apiKey, tagHash, adserverEndpoint), (req, res) => {
+router.post('/formsubmit-none-v3', createSlpMiddleware("fast","none","v3",eventsTypes.SUBSCRIBE, apiKeyV3, tagHashV3, adserverEndpoint), (req, res) => {
     const slpRes = res.locals.slpRes
 
     res.json(slpRes);
 });
-router.post('/formsubmit-banrti-v3', createSlpMiddleware("fast","banRti","v3",eventsTypes.SUBSCRIBE, apiKey, tagHash, adserverEndpoint), (req, res) => {
+router.post('/formsubmit-banrti-v3', createSlpMiddleware("fast","banRti","v3",eventsTypes.SUBSCRIBE, apiKeyV3, tagHashV3, adserverEndpoint), (req, res) => {
     const slpRes = res.locals.slpRes
 
     res.json(slpRes);
 });
-router.post('/formsubmit-rticookie-v3', createSlpMiddleware("fast","rtiCookie","v3",eventsTypes.SUBSCRIBE, apiKey, tagHash, adserverEndpoint), (req, res) => {
+router.post('/formsubmit-rticookie-v3', createSlpMiddleware("fast","rtiCookie","v3",eventsTypes.SUBSCRIBE, apiKeyV3, tagHashV3, adserverEndpoint), (req, res) => {
     const slpRes = res.locals.slpRes
 
     res.json(slpRes);
 });
-router.post('/formsubmit-requestid-v3', createSlpMiddleware("fast","requestId","v3",eventsTypes.SUBSCRIBE, apiKey, tagHash, adserverEndpoint), (req, res) => {
+router.post('/formsubmit-requestid-v3', createSlpMiddleware("fast","requestId","v3",eventsTypes.SUBSCRIBE, apiKeyV3, tagHashV3, adserverEndpoint), (req, res) => {
     const slpRes = res.locals.slpRes
 
     res.json(slpRes);
@@ -195,7 +197,7 @@ router.post('/formsubmit-requestid-v3', createSlpMiddleware("fast","requestId","
 // All identifiers (Cookies + Page View ID + DUID + IP + User Agent)
 router.post(
   "/formsubmit-all_identifiers-v4-prod",
-  createSlpMiddleware("comprehensive", "all_identifiers", "v4", eventsTypes.SUBSCRIBE, apiKey, tagHash, adserverEndpoint),
+  createSlpMiddleware("comprehensive", "all_identifiers", "v4", eventsTypes.SUBSCRIBE, apiKeyV4, tagHashV4, adserverEndpoint),
   (req, res) => {
     res.json({
       slpReq: res.locals.slpReq,
@@ -207,7 +209,7 @@ router.post(
 // Cookies only
 router.post(
   "/formsubmit-cookies-v4-prod",
-  createSlpMiddleware("comprehensive", "cookies", "v4", eventsTypes.SUBSCRIBE, apiKey, tagHash, adserverEndpoint),
+  createSlpMiddleware("comprehensive", "cookies", "v4", eventsTypes.SUBSCRIBE, apiKeyV4, tagHashV4, adserverEndpoint),
   (req, res) => {
     res.json({
       slpReq: res.locals.slpReq,
@@ -219,7 +221,7 @@ router.post(
 // Page View ID only
 router.post(
   "/formsubmit-pageviewid-v4-prod",
-  createSlpMiddleware("comprehensive", "pageviewid", "v4", eventsTypes.SUBSCRIBE, apiKey, tagHash, adserverEndpoint),
+  createSlpMiddleware("comprehensive", "pageviewid", "v4", eventsTypes.SUBSCRIBE, apiKeyV4, tagHashV4, adserverEndpoint),
   (req, res) => {
     res.json({
       slpReq: res.locals.slpReq,
@@ -231,7 +233,7 @@ router.post(
 // DUID only
 router.post(
   "/formsubmit-duid-v4-prod",
-  createSlpMiddleware("comprehensive","duid", "v4", eventsTypes.SUBSCRIBE, apiKey, tagHash, adserverEndpoint),
+  createSlpMiddleware("comprehensive","duid", "v4", eventsTypes.SUBSCRIBE, apiKeyV4, tagHashV4, adserverEndpoint),
   (req, res) => {
     res.json({
       slpReq: res.locals.slpReq,
@@ -243,7 +245,7 @@ router.post(
 // IP & User Agent
 router.post(
   "/formsubmit-ip_useragent-v4-prod",
-  createSlpMiddleware("comprehensive", "ip_useragent", "v4", eventsTypes.SUBSCRIBE, apiKey, tagHash, adserverEndpoint),
+  createSlpMiddleware("comprehensive", "ip_useragent", "v4", eventsTypes.SUBSCRIBE, apiKeyV4, tagHashV4, adserverEndpoint),
   (req, res) => {
     console.log("[prod.js] Invoked /formsubmit-ip_useragent-v4-prod route");
     res.json({
